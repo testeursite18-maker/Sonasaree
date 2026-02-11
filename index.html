@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sona's Saree | 4 Ensembles d'Exception</title>
+    <title>Sona's Saree | Ensembles d'Exception</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -121,7 +121,7 @@
             cursor: pointer;
         }
 
-        /* Hero Carousel avec les 4 ensembles - VIDEOS */
+        /* Hero Carousel avec les ensembles - VIDEOS */
         .hero {
             margin-top: 60px;
             height: calc(100vh - 60px);
@@ -144,7 +144,7 @@
             height: 100%;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,9 +157,9 @@
             z-index: 2;
         }
 
-        /* Fonds colorés adaptés pour chaque vidéo */
+        /* Fonds colorés adaptés pour chaque vidéo - CORRIGÉ */
         .slide-ensemble-4 { background: linear-gradient(135deg, #0a1a05 0%, #1a3d0f 50%, #0a1a05 100%); }
-        .slide-ensemble-2 { background: linear-gradient(135deg, #5a4a2d 0%, #B8860B 50%, #5a4a2d 100%); }
+        .slide-ensemble-2 { background: linear-gradient(135deg, #4a0000 0%, #8B0000 50%, #4a0000 100%); } /* ROUGE FONCÉ CORRIGÉ */
         .slide-ensemble-3 { background: linear-gradient(135deg, #051020 0%, #1a3a5c 50%, #051020 100%); }
         .slide-ensemble-1 { background: linear-gradient(135deg, #150a25 0%, #3d2060 50%, #150a25 100%); }
 
@@ -346,7 +346,7 @@
             margin: 0 auto;
         }
 
-        /* Les 4 Ensembles avec fonds colorés */
+        /* Les Ensembles avec fonds colorés */
         .ensembles-section {
             background: var(--cream);
             transition: background 0.6s ease;
@@ -368,11 +368,11 @@
         }
 
         .ensembles-section.bg-ensemble-2 {
-            background: linear-gradient(180deg, #f5f0e0 0%, #ebe0c0 100%);
+            background: linear-gradient(180deg, #f5e0e0 0%, #ebc0c0 100%); /* Fond rouge clair */
         }
         .ensembles-section.bg-ensemble-2 .section-header h2,
         .ensembles-section.bg-ensemble-2 .section-header p {
-            color: #5a4a2d;
+            color: #8B0000;
         }
 
         .ensembles-section.bg-ensemble-3 {
@@ -726,6 +726,7 @@
             color: var(--white);
             padding: 50px 20px 25px;
             text-align: center;
+            position: relative;
         }
 
         .footer-content {
@@ -778,6 +779,389 @@
             color: rgba(255,255,255,0.6);
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 25px;
+        }
+
+        /* 3 Petits Points Discrets - Login Admin */
+        .admin-login-trigger {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 9998;
+            padding: 10px;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .admin-login-trigger:hover {
+            opacity: 1;
+        }
+
+        .admin-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .admin-login-trigger:hover .admin-dot {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* Modal Login Admin */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-modal.active {
+            display: flex;
+        }
+
+        .admin-login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-login-box h2 {
+            color: var(--logo-dark);
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .admin-login-box input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .admin-login-box input:focus {
+            outline: none;
+            border-color: var(--logo-green);
+        }
+
+        .admin-login-box button {
+            width: 100%;
+            padding: 15px;
+            background: var(--logo-green);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-login-box button:hover {
+            background: var(--logo-dark);
+        }
+
+        .admin-login-box .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            width: auto;
+            padding: 5px;
+        }
+
+        .admin-login-box .error-msg {
+            color: var(--rent);
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Interface Admin */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cream);
+            z-index: 10001;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
+            background: var(--logo-dark);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .admin-header h2 {
+            font-size: 20px;
+        }
+
+        .admin-header button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .admin-header button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .admin-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-card h3 {
+            font-size: 32px;
+            color: var(--logo-green);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .admin-form {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .admin-form h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--logo-green);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-upload {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload:hover {
+            border-color: var(--logo-green);
+            background: rgba(126, 141, 130, 0.05);
+        }
+
+        .image-upload i {
+            font-size: 40px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .image-upload p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .admin-form button[type="submit"] {
+            background: var(--logo-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .admin-form button[type="submit"]:hover {
+            background: var(--logo-dark);
+        }
+
+        .ensembles-list {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .ensembles-list h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .ensemble-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .ensemble-item:hover {
+            background: #f9f9f9;
+        }
+
+        .ensemble-item:last-child {
+            border-bottom: none;
+        }
+
+        .ensemble-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .ensemble-item-info {
+            flex: 1;
+        }
+
+        .ensemble-item-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .ensemble-item-info p {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .ensemble-item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ensemble-item-actions button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: var(--service);
+            color: var(--dark);
+        }
+
+        .btn-edit:hover {
+            background: #c4a030;
+        }
+
+        .btn-delete {
+            background: var(--rent);
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #e02e24;
         }
 
         /* Instagram Page */
@@ -992,6 +1376,20 @@
             .about-text h3 {
                 font-size: 24px;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ensemble-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ensemble-item-actions {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* Petit mobile */
@@ -1014,6 +1412,59 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* MASK REVEAL ANIMATIONS */
+        .mask-reveal {
+            clip-path: inset(0 100% 0 0);
+            opacity: 0;
+        }
+
+        .mask-reveal.revealed {
+            clip-path: inset(0 0 0 0);
+            opacity: 1;
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+
+        .mask-reveal-up {
+            clip-path: inset(100% 0 0 0);
+            opacity: 0;
+        }
+
+        .mask-reveal-up.revealed {
+            clip-path: inset(0 0 0 0);
+            opacity: 1;
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+
+        .mask-reveal-circle {
+            clip-path: circle(0% at 50% 50%);
+            opacity: 0;
+        }
+
+        .mask-reveal-circle.revealed {
+            clip-path: circle(100% at 50% 50%);
+            opacity: 1;
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+        }
+
+        /* Animated Mockup Effect */
+        .mockup-float {
+            animation: mockupFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes mockupFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .mockup-pulse {
+            animation: mockupPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes mockupPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
     </style>
 <base target="_blank">
 </head>
@@ -1027,7 +1478,7 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#ensembles">4 Ensembles</a></li>
+                <li><a href="#ensembles" id="ensemblesNavLink">4 Ensembles</a></li>
                 <li><a href="#apropos">À Propos</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1035,12 +1486,12 @@
         </nav>
     </header>
 
-    <!-- Hero Carousel - 4 Ensembles avec VIDEOS -->
+    <!-- Hero Carousel - Ensembles avec VIDEOS -->
     <section class="hero" id="accueil">
         <div class="carousel-container">
             <!-- Slide 1 : Ensemble 4 (Vert Émeraude) -->
             <div class="carousel-slide slide-ensemble-4 active" data-index="0">
-                <video id="video-0" muted playsinline preload="auto" loop="false">
+                <video id="video-0" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
                     <source src="Ensemble 4 vid.mp4" type="video/mp4">
                 </video>
                 <div class="video-progress">
@@ -1048,9 +1499,9 @@
                 </div>
             </div>
             
-            <!-- Slide 2 : Ensemble 2 (Kasavu Kerala) -->
+            <!-- Slide 2 : Ensemble 2 (Kasavu Kerala) - FOND ROUGE FONCÉ -->
             <div class="carousel-slide slide-ensemble-2" data-index="1">
-                <video id="video-1" muted playsinline preload="auto" loop="false">
+                <video id="video-1" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
                     <source src="Ensemble 2 vid.mp4" type="video/mp4">
                 </video>
                 <div class="video-progress">
@@ -1060,7 +1511,7 @@
             
             <!-- Slide 3 : Ensemble 3 (Bleu Moderne) -->
             <div class="carousel-slide slide-ensemble-3" data-index="2">
-                <video id="video-2" muted playsinline preload="auto" loop="false">
+                <video id="video-2" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
                     <source src="Ensemble 3 vid.mp4" type="video/mp4">
                 </video>
                 <div class="video-progress">
@@ -1070,7 +1521,7 @@
             
             <!-- Slide 4 : Ensemble 1 (Bleu Nuit) -->
             <div class="carousel-slide slide-ensemble-1" data-index="3">
-                <video id="video-3" muted playsinline preload="auto" loop="false">
+                <video id="video-3" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
                     <source src="Ensemble 1 vid.mp4" type="video/mp4">
                 </video>
                 <div class="video-progress">
@@ -1084,7 +1535,7 @@
             <h1 id="heroTitle">Vert Émeraude Vintage</h1>
             <p id="heroDesc">L'élégance intemporelle du patrimoine indien</p>
             <a href="#ensembles" class="hero-cta" id="heroCta">
-                Découvrir les 4 Ensembles
+                Découvrir les Ensembles
                 <i class="fas fa-arrow-down"></i>
             </a>
         </div>
@@ -1097,14 +1548,14 @@
         </div>
     </section>
 
-    <!-- Les 4 Ensembles -->
+    <!-- Les Ensembles -->
     <section class="ensembles-section bg-ensemble-4" id="ensembles">
         <div class="section-header" id="ensembleHeader">
-            <h2>Nos 4 Ensembles</h2>
+            <h2>Nos Ensembles</h2>
             <p>Chaque ensemble raconte une histoire unique, entre tradition et modernité</p>
         </div>
 
-        <!-- Tabs pour les 4 ensembles -->
+        <!-- Tabs pour les ensembles -->
         <div class="ensemble-tabs" id="ensembleTabs">
             <button class="ensemble-tab" onclick="showEnsemble(1)">
                 <i class="fas fa-gem"></i> Ensemble 1
@@ -1285,7 +1736,7 @@
             <div class="about-text" id="aboutText">
                 <h3>Bienvenue chez Sona's Saree</h3>
                 <p>Derrière ce compte se trouve une passionnée d'esthétique, animée par le désir de partager une vision unique à travers sa culture et son savoir-faire. Chaque création est pensée comme une rencontre entre art, identité et émotion.</p>
-                <p>À travers mes 4 ensembles, je veux mettre en lumière la féminité indienne et sud-asiatique, symbole de grâce et d'élégance. Chaque tenue est une rencontre entre héritage historique, créativité et modernité.</p>
+                <p>À travers nos ensembles, je veux mettre en lumière la féminité indienne et sud-asiatique, symbole de grâce et d'élégance. Chaque tenue est une rencontre entre héritage historique, créativité et modernité.</p>
                 <div class="slogan-box">
                     <i class="fas fa-quote-left"></i>
                     Creativity is the Key of Happiness
@@ -1311,7 +1762,7 @@
                     <i class="fas fa-clock"></i>
                 </div>
                 <h3>Location de Saree</h3>
-                <p>Louez l'un de nos 4 ensembles pour vos événements spéciaux. Chaque tenue est accompagnée de ses accessoires coordonnés.</p>
+                <p>Louez l'un de nos ensembles pour vos événements spéciaux. Chaque tenue est accompagnée de ses accessoires coordonnés.</p>
                 <div class="service-price">Sur devis</div>
             </div>
 
@@ -1400,11 +1851,120 @@
             </div>
 
             <div class="copyright" id="footerCopyright">
-                <p>&copy; 2025 Sona's Saree | 4 Ensembles d'Exception</p>
+                <p>&copy; 2025 Sona's Saree | Ensembles d'Exception</p>
                 <p>Design Apple-Style | Tous droits réservés</p>
             </div>
         </div>
     </footer>
+
+    <!-- 3 Petits Points Discrets - Login Admin -->
+    <div class="admin-login-trigger" onclick="showAdminLogin()" title="Admin Login">
+        <div class="admin-dot"></div>
+        <div class="admin-dot"></div>
+        <div class="admin-dot"></div>
+    </div>
+
+    <!-- Modal Login Admin -->
+    <div id="adminLoginModal" class="admin-modal">
+        <div class="admin-login-box" style="position: relative;">
+            <button class="close-btn" onclick="hideAdminLogin()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2><i class="fas fa-lock" style="margin-right: 10px;"></i>Admin Login</h2>
+            <input type="text" id="adminUsername" placeholder="Identifiant" autocomplete="off">
+            <input type="password" id="adminPassword" placeholder="Mot de passe">
+            <button onclick="loginAdmin()">Se connecter</button>
+            <p class="error-msg" id="loginError">Identifiant ou mot de passe incorrect</p>
+        </div>
+    </div>
+
+    <!-- Interface Admin -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h2><i class="fas fa-cog" style="margin-right: 10px;"></i>Panel Administrateur</h2>
+            <button onclick="logoutAdmin()">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </button>
+        </div>
+        
+        <div class="admin-content">
+            <!-- Stats -->
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h3 id="totalEnsembles">4</h3>
+                    <p>Ensembles</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalLocations">3</h3>
+                    <p>Locations</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalShootings">1</h3>
+                    <p>Shootings</p>
+                </div>
+            </div>
+
+            <!-- Formulaire d'ajout -->
+            <div class="admin-form">
+                <h3><i class="fas fa-plus-circle" style="margin-right: 10px;"></i>Ajouter un nouvel ensemble</h3>
+                <form id="addEnsembleForm" onsubmit="addEnsemble(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Titre de l'ensemble</label>
+                            <input type="text" id="newEnsembleTitle" placeholder="Ex: Ensemble 5 - Rouge Passion" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="newEnsembleType" required>
+                                <option value="location">Location</option>
+                                <option value="vente">Vente</option>
+                                <option value="shooting">Shooting Photo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prix (optionnel)</label>
+                            <input type="text" id="newEnsemblePrice" placeholder="Ex: 50€ ou Sur devis">
+                        </div>
+                        <div class="form-group">
+                            <label>Couleur de fond</label>
+                            <select id="newEnsembleColor">
+                                <option value="purple">Violet</option>
+                                <option value="red">Rouge</option>
+                                <option value="blue">Bleu</option>
+                                <option value="green">Vert</option>
+                                <option value="gold">Or/Doré</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="newEnsembleDesc" placeholder="Décrivez l'ensemble..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Photos</label>
+                        <div class="image-upload" onclick="document.getElementById('ensembleImages').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Cliquez pour uploader des photos</p>
+                            <input type="file" id="ensembleImages" multiple accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                    <button type="submit">
+                        <i class="fas fa-plus" style="margin-right: 8px;"></i>Ajouter l'ensemble
+                    </button>
+                </form>
+            </div>
+
+            <!-- Liste des ensembles -->
+            <div class="ensembles-list">
+                <h3><i class="fas fa-list" style="margin-right: 10px;"></i>Ensembles publiés</h3>
+                <div id="ensemblesListContainer">
+                    <!-- Les ensembles seront ajoutés ici dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Instagram Page -->
     <div id="instagramPage" class="instagram-page">
@@ -1413,13 +1973,13 @@
                 <i class="fab fa-instagram"></i>
             </div>
             <h2>Commander sur Instagram</h2>
-            <p>Envoyez-nous un message direct pour réserver l'un des 4 ensembles ou nos services.</p>
+            <p>Envoyez-nous un message direct pour réserver l'un des ensembles ou nos services.</p>
 
             <div class="dm-options">
                 <a href="https://instagram.com/saree_by_sona" target="_blank" class="dm-btn">
                     <i class="fas fa-tshirt"></i>
                     <div class="dm-btn-text">
-                        <strong>Louer un Ensemble (1-4)</strong>
+                        <strong>Louer un Ensemble</strong>
                         <span>Vérifiez disponibilité et tarifs</span>
                     </div>
                     <i class="fas fa-chevron-right"></i>
@@ -1462,13 +2022,13 @@
 
     <script>
         // ============================================
-        // GSAP SCROLLTRIGGER ANIMATIONS
+        // GSAP SCROLLTRIGGER ANIMATIONS - MASK REVEAL
         // ============================================
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animations au scroll
+        // Animations au scroll avec Mask Reveal
         function initAnimations() {
-            // Section headers
+            // Section headers avec mask reveal
             gsap.utils.toArray('.section-header').forEach(header => {
                 gsap.from(header.children, {
                     opacity: 0,
@@ -1484,12 +2044,11 @@
                 });
             });
 
-            // Gallery items
+            // Gallery items avec mask reveal circle
             gsap.utils.toArray('.gallery-item').forEach((item, i) => {
                 gsap.from(item, {
                     opacity: 0,
-                    y: 30,
-                    scale: 0.95,
+                    scale: 0.8,
                     duration: 0.6,
                     delay: i * 0.05,
                     ease: 'power3.out',
@@ -1501,7 +2060,7 @@
                 });
             });
 
-            // About section
+            // About section avec mask reveal latéral
             gsap.from('.about-text > *', {
                 opacity: 0,
                 x: -40,
@@ -1526,7 +2085,7 @@
                 }
             });
 
-            // Service cards
+            // Service cards avec mask reveal up
             gsap.utils.toArray('.service-card').forEach((card, i) => {
                 gsap.from(card, {
                     opacity: 0,
@@ -1561,7 +2120,7 @@
         }
 
         // ============================================
-        // CAROUSEL AVEC VIDEOS - Autoplay & Auto-scroll
+        // CAROUSEL AVEC VIDEOS - CORRIGÉ
         // ============================================
         const ensembleData = [
             { name: "Ensemble 4", title: "Vert Émeraude - Shooting", desc: "Shooting photo artistique exclusif" },
@@ -1581,12 +2140,23 @@
                 const video = document.getElementById(`video-${i}`);
                 if (video) {
                     video.load();
+                    video.muted = true;
+                    video.playsInline = true;
+                    video.setAttribute('webkit-playsinline', 'true');
+                    video.setAttribute('x5-playsinline', 'true');
+                    
                     video.addEventListener('loadeddata', () => {
                         videosLoaded[i] = true;
                         console.log(`Video ${i} loaded`);
                     });
                     video.addEventListener('error', (e) => {
                         console.error(`Video ${i} error:`, e);
+                    });
+                    // CORRECTION: S'assurer que la vidéo joue quand elle est prête
+                    video.addEventListener('canplay', () => {
+                        if (i === currentSlide && video.paused) {
+                            video.play().catch(e => console.log('Canplay play failed:', e));
+                        }
                     });
                 }
             }
@@ -1600,7 +2170,24 @@
             document.getElementById('heroDesc').textContent = data.desc;
         }
 
-        // Afficher un slide spécifique avec transition rapide
+        // CORRECTION: Fonction pour jouer une vidéo avec retry
+        async function playVideoWithRetry(video, maxRetries = 3) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    video.muted = true;
+                    video.currentTime = 0;
+                    await video.play();
+                    console.log('Video playing successfully');
+                    return true;
+                } catch (e) {
+                    console.log(`Play attempt ${i + 1} failed:`, e);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+            }
+            return false;
+        }
+
+        // Afficher un slide spécifique avec transition
         function showSlide(index) {
             if (isTransitioning || index === currentSlide) return;
             isTransitioning = true;
@@ -1616,23 +2203,16 @@
                 currentVideo.currentTime = 0;
             }
 
-            // Transition rapide (0.3s)
+            // Transition
             slides[currentSlide].classList.remove('active');
             slides[index].classList.add('active');
             
             dots[currentSlide].classList.remove('active');
             dots[index].classList.add('active');
 
-            // Jouer la nouvelle vidéo
+            // CORRECTION: Jouer la nouvelle vidéo avec retry
             if (nextVideo) {
-                nextVideo.currentTime = 0;
-                nextVideo.muted = true;
-                const playPromise = nextVideo.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(e => {
-                        console.log('Video play failed:', e);
-                    });
-                }
+                playVideoWithRetry(nextVideo);
             }
 
             updateHeroContent(index);
@@ -1640,7 +2220,7 @@
             
             setTimeout(() => {
                 isTransitioning = false;
-            }, 300);
+            }, 600);
         }
 
         // Changer de slide (manuel)
@@ -1687,41 +2267,50 @@
                 
                 const video = document.getElementById(`video-${currentSlide}`);
                 if (video && video.duration && !isNaN(video.duration)) {
-                    // Vérifier si la vidéo est terminée (0.2s avant la fin)
-                    if (video.ended || video.currentTime >= video.duration - 0.2) {
+                    // CORRECTION: Vérifier si la vidéo est terminée (0.3s avant la fin)
+                    if (video.ended || video.currentTime >= video.duration - 0.3) {
                         nextSlide();
+                    }
+                    // CORRECTION: Si la vidéo est en pause mais devrait jouer, la redémarrer
+                    if (video.paused && !document.hidden) {
+                        video.play().catch(e => console.log('Resume play failed:', e));
                     }
                 }
             }, 50);
         }
 
-        // Démarrer la première vidéo
+        // CORRECTION: Démarrer la première vidéo immédiatement
         function startFirstVideo() {
             const firstVideo = document.getElementById('video-0');
             if (firstVideo) {
+                // Forcer les attributs pour l'autoplay
                 firstVideo.muted = true;
                 firstVideo.playsInline = true;
+                firstVideo.setAttribute('webkit-playsinline', 'true');
+                firstVideo.setAttribute('x5-playsinline', 'true');
                 
-                const playVideo = () => {
+                // Essayer de jouer immédiatement
+                const attemptPlay = () => {
                     firstVideo.play().then(() => {
-                        console.log('First video playing');
+                        console.log('First video playing automatically');
                     }).catch(e => {
-                        console.log('Autoplay blocked, waiting for interaction');
+                        console.log('Autoplay blocked, will retry on interaction');
                     });
                 };
                 
-                playVideo();
+                // Essayer après un court délai
+                setTimeout(attemptPlay, 100);
                 
-                // Si autoplay bloqué, attendre une interaction
-                if (firstVideo.paused) {
-                    const startOnInteraction = () => {
-                        firstVideo.play();
-                        document.removeEventListener('click', startOnInteraction);
-                        document.removeEventListener('touchstart', startOnInteraction);
-                    };
-                    document.addEventListener('click', startOnInteraction, { once: true });
-                    document.addEventListener('touchstart', startOnInteraction, { once: true });
-                }
+                // Si bloqué, attendre une interaction
+                const startOnInteraction = () => {
+                    if (firstVideo.paused) {
+                        firstVideo.play().catch(e => console.log('Interaction play failed:', e));
+                    }
+                };
+                
+                document.addEventListener('click', startOnInteraction, { once: true });
+                document.addEventListener('touchstart', startOnInteraction, { once: true });
+                document.addEventListener('scroll', startOnInteraction, { once: true });
             }
         }
 
@@ -1813,6 +2402,150 @@
         }
 
         // ============================================
+        // ADMIN LOGIN & PANEL
+        // ============================================
+        const ADMIN_USERNAME = 'Sonasaree';
+        const ADMIN_PASSWORD = '0987';
+        let isAdminLoggedIn = false;
+
+        // Données des ensembles (stockées en mémoire)
+        let ensemblesData = [
+            { id: 1, title: 'Ensemble 1 : Bleu Nuit & Argent', type: 'location', desc: 'Saree bleu nuit moderne avec broderies cuivrées', images: ['Ensemble 1 Photo 3.jpg'] },
+            { id: 2, title: 'Ensemble 2 : Kasavu du Kerala', type: 'location', desc: 'Inspiré du Kerala Saree ou Kasavu', images: ['Ensemble 2 photo 1.jpg'] },
+            { id: 3, title: 'Ensemble 3 : Modernité & Tradition', type: 'location', desc: 'Saree bleu sarcelle avec broderies dorées', images: ['Ensemble 3 photo 1.jpg'] },
+            { id: 4, title: 'Ensemble 4 : Vert Émeraude Vintage', type: 'shooting', desc: 'Shooting artistique exclusif', images: ['Ensemble 4 photoshoot photo 1.jpg'] }
+        ];
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('active');
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('active');
+        }
+
+        function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                hideAdminLogin();
+                document.getElementById('adminPanel').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateEnsemblesList();
+                updateStats();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('adminPanel').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.getElementById('adminUsername').value = '';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        function updateStats() {
+            document.getElementById('totalEnsembles').textContent = ensemblesData.length;
+            document.getElementById('totalLocations').textContent = ensemblesData.filter(e => e.type === 'location').length;
+            document.getElementById('totalShootings').textContent = ensemblesData.filter(e => e.type === 'shooting').length;
+            
+            // Mettre à jour le menu
+            const navLink = document.getElementById('ensemblesNavLink');
+            if (navLink) {
+                navLink.textContent = ensemblesData.length + ' Ensembles';
+            }
+            
+            // Mettre à jour le titre de la section
+            const sectionHeader = document.querySelector('#ensembles .section-header h2');
+            if (sectionHeader) {
+                sectionHeader.textContent = 'Nos ' + ensemblesData.length + ' Ensembles';
+            }
+        }
+
+        function updateEnsemblesList() {
+            const container = document.getElementById('ensemblesListContainer');
+            container.innerHTML = '';
+            
+            ensemblesData.forEach(ensemble => {
+                const item = document.createElement('div');
+                item.className = 'ensemble-item';
+                item.innerHTML = `
+                    <img src="${ensemble.images[0]}" alt="${ensemble.title}">
+                    <div class="ensemble-item-info">
+                        <h4>${ensemble.title}</h4>
+                        <p>${ensemble.desc}</p>
+                    </div>
+                    <div class="ensemble-item-actions">
+                        <button class="btn-edit" onclick="editEnsemble(${ensemble.id})">
+                            <i class="fas fa-edit"></i> Modifier
+                        </button>
+                        <button class="btn-delete" onclick="deleteEnsemble(${ensemble.id})">
+                            <i class="fas fa-trash"></i> Supprimer
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function addEnsemble(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('newEnsembleTitle').value;
+            const type = document.getElementById('newEnsembleType').value;
+            const price = document.getElementById('newEnsemblePrice').value;
+            const desc = document.getElementById('newEnsembleDesc').value;
+            const color = document.getElementById('newEnsembleColor').value;
+            
+            const newEnsemble = {
+                id: Date.now(),
+                title: title,
+                type: type,
+                price: price,
+                desc: desc,
+                color: color,
+                images: ['Logo .jpg'] // Image par défaut
+            };
+            
+            ensemblesData.push(newEnsemble);
+            
+            // Reset form
+            document.getElementById('addEnsembleForm').reset();
+            
+            // Update UI
+            updateEnsemblesList();
+            updateStats();
+            
+            alert('Ensemble ajouté avec succès !');
+        }
+
+        function editEnsemble(id) {
+            const ensemble = ensemblesData.find(e => e.id === id);
+            if (ensemble) {
+                const newTitle = prompt('Nouveau titre:', ensemble.title);
+                const newDesc = prompt('Nouvelle description:', ensemble.desc);
+                
+                if (newTitle !== null) ensemble.title = newTitle;
+                if (newDesc !== null) ensemble.desc = newDesc;
+                
+                updateEnsemblesList();
+            }
+        }
+
+        function deleteEnsemble(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet ensemble ?')) {
+                ensemblesData = ensemblesData.filter(e => e.id !== id);
+                updateEnsemblesList();
+                updateStats();
+            }
+        }
+
+        // ============================================
         // INITIALIZATION
         // ============================================
         document.addEventListener('DOMContentLoaded', () => {
@@ -1822,20 +2555,25 @@
             // Démarrer les animations
             initAnimations();
             
-            // Démarrer la première vidéo
-            setTimeout(startFirstVideo, 500);
+            // CORRECTION: Démarrer la première vidéo immédiatement
+            startFirstVideo();
             
             // Démarrer le carrousel
-            setTimeout(startCarousel, 1000);
+            setTimeout(startCarousel, 500);
             
             // Mettre à jour le contenu initial
             updateHeroContent(0);
+            
+            // Initialiser les stats admin
+            updateStats();
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 hideInstagramPage();
+                hideAdminLogin();
+                if (isAdminLoggedIn) logoutAdmin();
                 const modals = document.querySelectorAll('[style*="z-index: 10001"]');
                 modals.forEach(m => m.remove());
             }
