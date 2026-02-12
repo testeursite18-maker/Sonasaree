@@ -38,7 +38,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* HEADER - Couleur adaptée au titre */
+        /* HEADER - Couleur adaptee au titre */
         header {
             position: fixed;
             top: 0;
@@ -104,33 +104,47 @@
 
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
 
-        /* TITRE SECTION - Photo titre */
-        .title-section {
+        /* HERO WRAPPER - Contient titre + carousel avec fond vert */
+        .hero-wrapper {
             margin-top: 70px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--logo-green) 0%, var(--logo-dark) 50%, var(--logo-green) 100%);
+            position: relative;
+        }
+
+        /* TITRE SECTION - Photo titre reduite */
+        .title-section {
             width: 100%;
             position: relative;
             overflow: hidden;
+            padding: 20px 20px 0;
         }
 
         .title-section img {
             width: 100%;
+            max-height: 200px;
             height: auto;
             display: block;
             object-fit: cover;
+            object-position: center;
+            border-radius: 16px 16px 0 0;
         }
 
         /* HERO CAROUSEL */
         .hero {
-            height: calc(100vh - 70px);
-            min-height: 500px;
+            height: calc(100vh - 290px);
+            min-height: 400px;
             position: relative;
             overflow: hidden;
+            padding: 0 20px 20px;
         }
 
         .carousel-container {
             position: relative;
             width: 100%;
             height: 100%;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
         }
 
         .carousel-slide {
@@ -163,7 +177,7 @@
             width: 70%;
             max-width: 800px;
             height: auto;
-            max-height: 70vh;
+            max-height: 60vh;
             object-fit: contain;
             border-radius: 16px;
             box-shadow: 0 25px 100px rgba(0,0,0,0.6);
@@ -182,7 +196,7 @@
 
         .hero-content {
             position: absolute;
-            bottom: 100px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -352,7 +366,7 @@
             transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
         }
 
-        /* MOCKUP ANIMÉ */
+        /* MOCKUP ANIME */
         .mockup-float {
             animation: mockupFloat 6s ease-in-out infinite;
         }
@@ -863,7 +877,7 @@
             animation: slideUp 0.5s ease;
         }
 
-        .edit-box { max-width: 650px; max-height: 90vh; overflow-y: auto; }
+        .edit-box { max-width: 700px; max-height: 90vh; overflow-y: auto; }
 
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(40px); }
@@ -1212,6 +1226,36 @@
 
         .add-image-btn:hover { border-color: var(--logo-green); background: rgba(90, 122, 106, 0.05); }
 
+        /* BOUTON SAUVEGARDER AMELIORE */
+        .btn-save {
+            background: linear-gradient(135deg, var(--logo-green), var(--logo-dark)) !important;
+            color: white;
+            border: none;
+            padding: 18px 32px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 8px 25px rgba(90, 122, 106, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(90, 122, 106, 0.5);
+        }
+
+        .btn-save:active {
+            transform: translateY(-1px);
+        }
+
         /* INSTAGRAM PAGE */
         .instagram-page {
             display: none;
@@ -1322,6 +1366,8 @@
             .about-content { gap: 50px; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .section-header h2 { font-size: 36px; }
+            .title-section img { max-height: 160px; }
+            .hero { height: calc(100vh - 250px); }
         }
 
         @media (max-width: 768px) {
@@ -1338,9 +1384,9 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
-            .hero { min-height: calc(100vh - 70px); }
-            .carousel-slide video { width: 90%; max-height: 55vh; }
-            .hero-content { bottom: 90px; }
+            .hero { min-height: 350px; height: calc(100vh - 230px); }
+            .carousel-slide video { width: 90%; max-height: 50vh; }
+            .hero-content { bottom: 70px; }
             .hero-content h1 { font-size: 28px; }
             .hero-content p { font-size: 15px; }
             .hero-cta { padding: 14px 28px; font-size: 14px; }
@@ -1357,7 +1403,9 @@
             .ensemble-item, .service-item, .contact-item { flex-direction: column; text-align: center; }
             .ensemble-item-actions, .service-item-actions, .contact-item-actions { width: 100%; justify-content: center; }
             .edit-images { grid-template-columns: repeat(2, 1fr); }
-            .title-section img { height: auto; }
+            .title-section img { max-height: 120px; }
+            .title-section { padding: 10px 10px 0; }
+            .hero { padding: 0 10px 10px; }
         }
 
         @media (max-width: 380px) {
@@ -1373,6 +1421,7 @@
             }
         }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -1391,54 +1440,57 @@
         </nav>
     </header>
 
-    <!-- TITRE SECTION - Photo titre -->
-    <div class="title-section" id="accueil">
-        <img src="IMG_0704.jpeg" alt="Sona's Saree - Titre" class="mask-reveal">
-    </div>
+    <!-- HERO WRAPPER - Photo titre + Carousel ensemble avec fond vert -->
+    <div class="hero-wrapper" id="accueil">
+        <!-- TITRE SECTION - Photo titre reduite -->
+        <div class="title-section">
+            <img src="IMG_0704.jpeg" alt="Sona's Saree - Titre" class="mask-reveal">
+        </div>
 
-    <!-- HERO CAROUSEL -->
-    <section class="hero">
-        <div class="carousel-container">
-            <div class="carousel-slide slide-ensemble-4 active" data-index="0">
-                <video id="video-0" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
-                    <source src="Ensemble 4 vid.mp4" type="video/mp4">
-                </video>
-                <div class="video-progress"><div class="video-progress-bar" id="progress-0"></div></div>
+        <!-- HERO CAROUSEL -->
+        <section class="hero">
+            <div class="carousel-container">
+                <div class="carousel-slide slide-ensemble-4 active" data-index="0">
+                    <video id="video-0" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
+                        <source src="Ensemble 4 vid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-progress"><div class="video-progress-bar" id="progress-0"></div></div>
+                </div>
+                <div class="carousel-slide slide-ensemble-2" data-index="1">
+                    <video id="video-1" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
+                        <source src="Ensemble 2 vid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-progress"><div class="video-progress-bar" id="progress-1"></div></div>
+                </div>
+                <div class="carousel-slide slide-ensemble-3" data-index="2">
+                    <video id="video-2" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
+                        <source src="Ensemble 3 vid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-progress"><div class="video-progress-bar" id="progress-2"></div></div>
+                </div>
+                <div class="carousel-slide slide-ensemble-1" data-index="3">
+                    <video id="video-3" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
+                        <source src="Ensemble 1 vid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-progress"><div class="video-progress-bar" id="progress-3"></div></div>
+                </div>
             </div>
-            <div class="carousel-slide slide-ensemble-2" data-index="1">
-                <video id="video-1" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
-                    <source src="Ensemble 2 vid.mp4" type="video/mp4">
-                </video>
-                <div class="video-progress"><div class="video-progress-bar" id="progress-1"></div></div>
+            <div class="hero-content" id="heroContent">
+                <span class="ensemble-indicator" id="ensembleIndicator">Ensemble 4</span>
+                <h1 id="heroTitle">Vert Emeraude Vintage</h1>
+                <p id="heroDesc">L'elegance intemporelle du patrimoine indien</p>
+                <a class="hero-cta" id="heroCta" onclick="scrollToSection('ensembles')">
+                    <i class="fas fa-shopping-bag"></i> Cliquer pour louer
+                </a>
             </div>
-            <div class="carousel-slide slide-ensemble-3" data-index="2">
-                <video id="video-2" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
-                    <source src="Ensemble 3 vid.mp4" type="video/mp4">
-                </video>
-                <div class="video-progress"><div class="video-progress-bar" id="progress-2"></div></div>
+            <div class="carousel-nav">
+                <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                <span class="carousel-dot" onclick="goToSlide(3)"></span>
             </div>
-            <div class="carousel-slide slide-ensemble-1" data-index="3">
-                <video id="video-3" muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
-                    <source src="Ensemble 1 vid.mp4" type="video/mp4">
-                </video>
-                <div class="video-progress"><div class="video-progress-bar" id="progress-3"></div></div>
-            </div>
-        </div>
-        <div class="hero-content" id="heroContent">
-            <span class="ensemble-indicator" id="ensembleIndicator">Ensemble 4</span>
-            <h1 id="heroTitle">Vert Emeraude Vintage</h1>
-            <p id="heroDesc">L'elegance intemporelle du patrimoine indien</p>
-            <a class="hero-cta" id="heroCta" onclick="scrollToSection('ensembles')">
-                <i class="fas fa-shopping-bag"></i> Cliquer pour louer
-            </a>
-        </div>
-        <div class="carousel-nav">
-            <span class="carousel-dot active" onclick="goToSlide(0)"></span>
-            <span class="carousel-dot" onclick="goToSlide(1)"></span>
-            <span class="carousel-dot" onclick="goToSlide(2)"></span>
-            <span class="carousel-dot" onclick="goToSlide(3)"></span>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- ENSEMBLES SECTION -->
     <section class="ensembles-section bg-ensemble-1" id="ensembles">
@@ -1446,7 +1498,7 @@
             <h2>Nos Ensembles</h2>
             <p>Chaque ensemble raconte une histoire unique, entre tradition et modernite</p>
         </div>
-        <div class="ensemble-tabs">
+        <div class="ensemble-tabs" id="ensembleTabs">
             <button class="ensemble-tab active" onclick="showEnsemble(1)"><i class="fas fa-gem"></i> Ensemble 1</button>
             <button class="ensemble-tab" onclick="showEnsemble(2)"><i class="fas fa-sun"></i> Ensemble 2</button>
             <button class="ensemble-tab" onclick="showEnsemble(3)"><i class="fas fa-water"></i> Ensemble 3</button>
@@ -1544,25 +1596,25 @@
             <p>Des prestations adaptees a vos besoins</p>
         </div>
         <div class="services-grid" id="servicesGrid">
-            <div class="service-card mask-reveal">
+            <div class="service-card mask-reveal" data-service-id="1">
                 <div class="service-icon"><i class="fas fa-clock"></i></div>
                 <h3>Location de Saree</h3>
                 <p>Louez l'un de nos ensembles pour vos evenements speciaux. Chaque tenue est accompagnee de ses accessoires coordonnes.</p>
                 <div class="service-price">Sur devis</div>
             </div>
-            <div class="service-card mask-reveal">
+            <div class="service-card mask-reveal" data-service-id="2">
                 <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
                 <h3>Drapage & Plissage</h3>
                 <p>Service professionnel de drapage avec plis personnalises et conseils de stylisme pour sublimer votre silhouette.</p>
                 <div class="service-price">15€</div>
             </div>
-            <div class="service-card mask-reveal">
+            <div class="service-card mask-reveal" data-service-id="3">
                 <div class="service-icon"><i class="fas fa-camera"></i></div>
                 <h3>Shooting Photo</h3>
                 <p>Reservez une seance photo artistique avec notre photographe @sop_mrt pour immortaliser votre elegance.</p>
                 <div class="service-price">Sur devis</div>
             </div>
-            <div class="service-card mask-reveal">
+            <div class="service-card mask-reveal" data-service-id="4">
                 <div class="service-icon"><i class="fas fa-palette"></i></div>
                 <h3>Conseil de Stylisme</h3>
                 <p>Conseils personnalises pour l'accessoirisation, le maquillage et la coiffure adaptes a votre tenue.</p>
@@ -1578,23 +1630,23 @@
             <p>Basee en Ile-de-France (91), a votre service</p>
         </div>
         <div class="contact-grid" id="contactGrid">
-            <div class="contact-card mask-reveal" onclick="showInstagramPage()" style="cursor: pointer;">
+            <div class="contact-card mask-reveal" data-contact-id="1" onclick="showInstagramPage()" style="cursor: pointer;">
                 <div class="contact-icon"><i class="fab fa-instagram"></i></div>
                 <h3>Instagram</h3>
                 <a href="https://instagram.com/saree_by_sona" target="_blank">@saree_by_sona</a>
                 <p>Cliquez pour louer</p>
             </div>
-            <div class="contact-card mask-reveal">
+            <div class="contact-card mask-reveal" data-contact-id="2">
                 <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                 <h3>Email</h3>
                 <a href="mailto:contact@sonassaree.com">contact@sonassaree.com</a>
             </div>
-            <div class="contact-card mask-reveal">
+            <div class="contact-card mask-reveal" data-contact-id="3">
                 <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                 <h3>Localisation</h3>
                 <p>Ile-de-France (91)</p>
             </div>
-            <div class="contact-card mask-reveal">
+            <div class="contact-card mask-reveal" data-contact-id="4">
                 <div class="contact-icon"><i class="fas fa-camera"></i></div>
                 <h3>Photographe</h3>
                 <a href="https://instagram.com/sop_mrt" target="_blank">@sop_mrt</a>
@@ -1693,7 +1745,7 @@
         </div>
     </div>
 
-    <!-- EDIT MODAL -->
+    <!-- EDIT MODAL - Avec bouton sauvegarder ameliore -->
     <div id="editModal" class="edit-modal">
         <div class="edit-box">
             <button class="close-btn" onclick="closeEditModal()"><i class="fas fa-times"></i></button>
@@ -1703,8 +1755,8 @@
             <div class="form-group"><label>Titre</label><input type="text" id="editTitle"></div>
             <div class="form-group"><label>Description</label><textarea id="editDesc"></textarea></div>
             <div class="form-group" id="editPriceGroup"><label>Prix</label><input type="text" id="editPrice"></div>
-            <div class="form-group"><label>Images</label><div class="edit-images" id="editImagesContainer"></div><input type="file" id="editNewImages" multiple accept="image/*" style="display: none;" onchange="handleEditNewImages(this)"></div>
-            <button onclick="saveEdit()" style="background: var(--logo-green); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;"><i class="fas fa-save" style="margin-right: 10px;"></i>Enregistrer</button>
+            <div class="form-group" id="editImagesGroup"><label>Images</label><div class="edit-images" id="editImagesContainer"></div><input type="file" id="editNewImages" multiple accept="image/*" style="display: none;" onchange="handleEditNewImages(this)"></div>
+            <button onclick="saveEdit()" class="btn-save"><i class="fas fa-save"></i> SAUVEGARDER LES MODIFICATIONS</button>
         </div>
     </div>
 
@@ -2059,6 +2111,7 @@
             document.getElementById('editTitle').value = item.title;
             document.getElementById('editDesc').value = item.desc || '';
             document.getElementById('editPriceGroup').style.display = (type === 'ensemble' || type === 'service') ? 'block' : 'none';
+            document.getElementById('editImagesGroup').style.display = (type === 'ensemble') ? 'block' : 'none';
             if (type === 'ensemble' || type === 'service') document.getElementById('editPrice').value = item.price || '';
             editingImages = item.images ? [...item.images] : [];
             updateEditImagesDisplay();
@@ -2107,16 +2160,24 @@
                 item.desc = document.getElementById('editDesc').value;
                 if (type === 'ensemble' || type === 'service') item.price = document.getElementById('editPrice').value;
                 if (type === 'ensemble') item.images = editingImages;
+                
+                // Mise a jour immediate de l'affichage sur la page
                 if (type === 'ensemble') updateEnsembleDisplay(item);
+                else if (type === 'service') updateServiceDisplay(item);
+                else if (type === 'contact') updateContactDisplay(item);
+                
+                // Mise a jour des listes dans le panel admin
                 updateEnsemblesList();
                 updateServicesList();
                 updateContactsList();
+                
                 closeEditModal();
-                alert('Modifications enregistrees !');
+                alert('Modifications enregistrees avec succes !');
             }
         }
 
         function updateEnsembleDisplay(ensemble) {
+            // Mettre a jour l'affichage dans la section ensembles
             const display = document.getElementById(`ensemble-${ensemble.id}`);
             if (display) {
                 const header = display.querySelector('.ensemble-header h3');
@@ -2132,6 +2193,37 @@
                     grid.innerHTML = imagesHtml;
                 }
             }
+        }
+
+        function updateServiceDisplay(service) {
+            // Mettre a jour l'affichage dans la section services
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                if (card.dataset.serviceId == service.id) {
+                    card.querySelector('h3').textContent = service.title;
+                    card.querySelector('p').textContent = service.desc;
+                    card.querySelector('.service-price').textContent = service.price;
+                }
+            });
+        }
+
+        function updateContactDisplay(contact) {
+            // Mettre a jour l'affichage dans la section contact
+            const cards = document.querySelectorAll('.contact-card');
+            cards.forEach(card => {
+                if (card.dataset.contactId == contact.id) {
+                    card.querySelector('h3').textContent = contact.title;
+                    const linkOrP = card.querySelector('a, p:not(.contact-icon + *)');
+                    if (linkOrP) {
+                        if (contact.link) {
+                            linkOrP.textContent = contact.value;
+                            linkOrP.href = contact.link;
+                        } else {
+                            linkOrP.textContent = contact.value;
+                        }
+                    }
+                }
+            });
         }
 
         function deleteEnsemble(id) {
@@ -2192,6 +2284,7 @@
             servicesData.forEach(service => {
                 const card = document.createElement('div');
                 card.className = 'service-card mask-reveal';
+                card.dataset.serviceId = service.id;
                 card.innerHTML = `<div class="service-icon"><i class="fas ${service.icon}"></i></div><h3>${service.title}</h3><p>${service.desc}</p><div class="service-price">${service.price}</div>`;
                 grid.appendChild(card);
             });
@@ -2203,8 +2296,11 @@
             contactsData.forEach(contact => {
                 const card = document.createElement('div');
                 card.className = 'contact-card mask-reveal';
-                card.onclick = contact.title === 'Instagram' ? 'showInstagramPage()' : '';
-                card.style.cursor = contact.title === 'Instagram' ? 'pointer' : 'default';
+                card.dataset.contactId = contact.id;
+                if (contact.title === 'Instagram') {
+                    card.onclick = showInstagramPage;
+                    card.style.cursor = 'pointer';
+                }
                 card.innerHTML = `<div class="contact-icon"><i class="${contact.icon}"></i></div><h3>${contact.title}</h3>${contact.link ? `<a href="${contact.link}" target="_blank">${contact.value}</a>` : `<p>${contact.value}</p>`}${contact.note ? `<p>${contact.note}</p>` : ''}`;
                 grid.appendChild(card);
             });
@@ -2212,6 +2308,10 @@
 
         // INIT
         document.addEventListener('DOMContentLoaded', () => {
+            // Forcer le scroll en haut de la page au chargement
+            window.scrollTo(0, 0);
+            history.scrollRestoration = 'manual';
+            
             preloadVideos();
             initMaskRevealAnimations();
             startFirstVideo();
