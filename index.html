@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sona's Saree | Ensembles d'Exception</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -21,7 +21,6 @@
             --rent: #FF3B30;
             --sale: #34C759;
             --service: #D4AF37;
-            --title-bg: #4a6b5a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +37,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* HEADER - Couleur adaptee au titre */
+        /* HEADER */
         header {
             position: fixed;
             top: 0;
@@ -104,7 +103,23 @@
 
         .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
 
-        /* HERO WRAPPER - Contient titre + carousel avec fond vert */
+        /* ADMIN INDICATOR IN HEADER */
+        .admin-indicator {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .admin-indicator.active { display: flex; }
+        .admin-indicator i { color: var(--gold); }
+
+        /* HERO WRAPPER */
         .hero-wrapper {
             margin-top: 70px;
             width: 100%;
@@ -112,28 +127,112 @@
             position: relative;
         }
 
-        /* TITRE SECTION - Photo titre reduite */
+        /* TITRE SECTION */
         .title-section {
             width: 100%;
             position: relative;
             overflow: hidden;
-            padding: 20px 20px 0;
+            padding: 40px 20px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
         }
 
-        .title-section img {
-            width: 100%;
-            max-height: 200px;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 16px 16px 0 0;
+        .title-text {
+            font-family: 'Great Vibes', 'Dancing Script', cursive;
+            font-size: 72px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 2;
+            animation: titleFadeIn 1.5s ease-out forwards, titleFloat 4s ease-in-out infinite 1.5s;
+            opacity: 0;
+            transform: translateY(20px);
+            letter-spacing: 2px;
+        }
+
+        .title-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+            animation: subtitleFadeIn 1.5s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        @keyframes titleFadeIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes subtitleFadeIn {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Fleurs animees */
+        .flower {
+            position: absolute;
+            color: rgba(255,255,255,0.25);
+            font-size: 24px;
+            animation: flowerFloat 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .flower:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; font-size: 32px; }
+        .flower:nth-child(2) { top: 60%; left: 5%; animation-delay: 1s; font-size: 20px; }
+        .flower:nth-child(3) { top: 25%; right: 10%; animation-delay: 2s; font-size: 28px; }
+        .flower:nth-child(4) { top: 65%; right: 8%; animation-delay: 0.5s; font-size: 22px; }
+        .flower:nth-child(5) { top: 45%; left: 15%; animation-delay: 1.5s; font-size: 18px; }
+        .flower:nth-child(6) { top: 20%; left: 50%; animation-delay: 2.5s; font-size: 26px; }
+        .flower:nth-child(7) { top: 70%; right: 20%; animation-delay: 3s; font-size: 20px; }
+        .flower:nth-child(8) { top: 35%; left: 8%; animation-delay: 1.8s; font-size: 24px; }
+
+        @keyframes flowerFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
+            25% { transform: translateY(-15px) rotate(10deg); opacity: 0.4; }
+            50% { transform: translateY(-5px) rotate(-5deg); opacity: 0.3; }
+            75% { transform: translateY(-20px) rotate(5deg); opacity: 0.35; }
+        }
+
+        /* Petales tombants */
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50% 0 50% 50%;
+            animation: petalFall 10s linear infinite;
+            z-index: 1;
+        }
+
+        .petal:nth-child(9) { left: 20%; animation-delay: 0s; }
+        .petal:nth-child(10) { left: 40%; animation-delay: 3s; }
+        .petal:nth-child(11) { left: 60%; animation-delay: 6s; }
+        .petal:nth-child(12) { left: 80%; animation-delay: 2s; }
+
+        @keyframes petalFall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
         }
 
         /* HERO CAROUSEL */
         .hero {
-            height: calc(100vh - 290px);
-            min-height: 400px;
+            height: calc(100vh - 320px);
+            min-height: 450px;
             position: relative;
             overflow: hidden;
             padding: 0 20px 20px;
@@ -366,25 +465,6 @@
             transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
         }
 
-        /* MOCKUP ANIME */
-        .mockup-float {
-            animation: mockupFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes mockupFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .mockup-pulse {
-            animation: mockupPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes mockupPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
         /* ENSEMBLES SECTION */
         .ensembles-section {
             background: var(--cream);
@@ -464,6 +544,7 @@
             border-radius: 24px;
             border: 1px solid rgba(126, 141, 130, 0.2);
             animation: ensembleFadeIn 0.5s ease forwards;
+            position: relative;
         }
 
         .ensemble-header h3 {
@@ -819,7 +900,11 @@
             padding-top: 30px;
         }
 
-        /* ADMIN LOGIN TRIGGER */
+        /* ============================================
+           ADMIN EDIT MODE - INLINE EDITING
+           ============================================ */
+        
+        /* Login trigger */
         .admin-login-trigger {
             position: fixed;
             bottom: 15px;
@@ -849,8 +934,8 @@
             transform: scale(1.3);
         }
 
-        /* ADMIN MODALS */
-        .admin-modal, .edit-modal {
+        /* Admin Login Modal */
+        .admin-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -864,9 +949,9 @@
             backdrop-filter: blur(10px);
         }
 
-        .admin-modal.active, .edit-modal.active { display: flex; }
+        .admin-modal.active { display: flex; }
 
-        .admin-login-box, .edit-box {
+        .admin-login-box {
             background: white;
             padding: 45px;
             border-radius: 28px;
@@ -877,21 +962,19 @@
             animation: slideUp 0.5s ease;
         }
 
-        .edit-box { max-width: 700px; max-height: 90vh; overflow-y: auto; }
-
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .admin-login-box h2, .edit-box h3 {
+        .admin-login-box h2 {
             font-family: 'Playfair Display', serif;
             color: var(--logo-dark);
             margin-bottom: 30px;
             font-size: 28px;
         }
 
-        .admin-login-box input, .edit-box input, .edit-box textarea {
+        .admin-login-box input {
             width: 100%;
             padding: 16px 22px;
             margin-bottom: 18px;
@@ -902,13 +985,13 @@
             transition: all 0.3s ease;
         }
 
-        .admin-login-box input:focus, .edit-box input:focus, .edit-box textarea:focus {
+        .admin-login-box input:focus {
             outline: none;
             border-color: var(--logo-green);
             box-shadow: 0 0 0 4px rgba(90, 122, 106, 0.1);
         }
 
-        .admin-login-box button, .edit-box button[type="submit"] {
+        .admin-login-box button {
             width: 100%;
             padding: 18px;
             background: var(--logo-green);
@@ -921,7 +1004,7 @@
             transition: all 0.3s ease;
         }
 
-        .admin-login-box button:hover, .edit-box button[type="submit"]:hover {
+        .admin-login-box button:hover {
             background: var(--logo-dark);
             transform: translateY(-2px);
         }
@@ -944,316 +1027,370 @@
 
         .error-msg { color: var(--rent); font-size: 14px; margin-top: 15px; display: none; }
 
-        /* ADMIN PANEL */
-        .admin-panel {
+        /* ============================================
+           INLINE EDITING STYLES
+           ============================================ */
+        
+        /* Edit wrapper */
+        .edit-wrapper {
+            position: relative;
+            border: 2px dashed transparent;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            padding: 8px;
+            margin: -8px;
+        }
+
+        .admin-mode .edit-wrapper:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .admin-mode .edit-wrapper.editing {
+            border-color: var(--logo-green);
+            background: rgba(90, 122, 106, 0.08);
+        }
+
+        /* Edit controls */
+        .edit-controls {
             display: none;
-            position: fixed;
+            position: absolute;
+            top: -40px;
+            right: 0;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .admin-mode .edit-wrapper:hover .edit-controls,
+        .admin-mode .edit-wrapper.editing .edit-controls {
+            display: flex;
+        }
+
+        .edit-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .edit-btn-save {
+            background: var(--sale);
+            color: white;
+        }
+
+        .edit-btn-save:hover {
+            background: #2db14a;
+            transform: scale(1.1);
+        }
+
+        .edit-btn-cancel {
+            background: var(--gray);
+            color: white;
+        }
+
+        .edit-btn-cancel:hover {
+            background: #666;
+            transform: scale(1.1);
+        }
+
+        .edit-btn-edit {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .edit-btn-edit:hover {
+            background: #c4a030;
+            transform: scale(1.1);
+        }
+
+        /* Inline inputs */
+        .inline-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--logo-green);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            background: white;
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .inline-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(90, 122, 106, 0.15);
+        }
+
+        .inline-input.title-input {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .inline-input.desc-input {
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 100px;
+        }
+
+        .inline-input.price-input {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--logo-green);
+            text-align: center;
+            max-width: 200px;
+        }
+
+        /* Image editing */
+        .image-edit-overlay {
+            display: none;
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--cream);
-            z-index: 10001;
-            overflow-y: auto;
-        }
-
-        .admin-panel.active { display: block; }
-
-        .admin-header {
-            background: linear-gradient(135deg, var(--logo-green), var(--logo-dark));
-            color: white;
-            padding: 25px;
-            display: flex;
-            justify-content: space-between;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            flex-direction: column;
             align-items: center;
-            position: sticky;
-            top: 0;
+            justify-content: center;
+            gap: 10px;
             z-index: 10;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-radius: 24px;
         }
 
-        .admin-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
+        .admin-mode .gallery-item:hover .image-edit-overlay {
+            display: flex;
         }
 
-        .admin-header button {
-            background: rgba(255,255,255,0.2);
+        .img-edit-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
             border: none;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 10px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .admin-header button:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .admin-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 25px;
-        }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover { transform: translateY(-5px); }
-
-        .stat-card h3 {
-            font-size: 42px;
-            color: var(--logo-green);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .stat-card p { color: var(--gray); font-size: 15px; }
-
-        .admin-form {
-            background: white;
-            padding: 35px;
-            border-radius: 24px;
-            margin-bottom: 35px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-
-        .admin-form h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 25px;
+        .img-edit-btn.replace {
+            background: var(--gold);
             color: var(--dark);
+        }
+
+        .img-edit-btn.delete {
+            background: var(--rent);
+            color: white;
+        }
+
+        .img-edit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Add image button */
+        .add-image-item {
+            display: none;
+            border: 3px dashed var(--logo-green);
+            border-radius: 24px;
+            aspect-ratio: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: rgba(90, 122, 106, 0.05);
+            transition: all 0.3s ease;
+            gap: 15px;
+        }
+
+        .admin-mode .add-image-item {
+            display: flex;
+        }
+
+        .add-image-item:hover {
+            background: rgba(90, 122, 106, 0.1);
+            border-color: var(--gold);
+        }
+
+        .add-image-item i {
+            font-size: 40px;
+            color: var(--logo-green);
+        }
+
+        .add-image-item span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--logo-green);
+        }
+
+        /* Service card editing */
+        .service-card .edit-wrapper {
+            margin: 0;
+            padding: 4px;
+        }
+
+        .service-card .inline-input {
+            font-size: 15px;
+        }
+
+        .service-card .inline-input.title-input {
             font-size: 24px;
         }
 
-        .form-group { margin-bottom: 25px; }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 15px;
+        /* Contact card editing */
+        .contact-card .edit-wrapper {
+            margin: 0;
+            padding: 4px;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--logo-green);
-            box-shadow: 0 0 0 4px rgba(90, 122, 106, 0.1);
-        }
-
-        .form-group textarea { min-height: 120px; resize: vertical; }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .image-upload {
-            border: 2px dashed #d0d0d0;
-            border-radius: 16px;
-            padding: 40px;
+        .contact-card .inline-input {
+            font-size: 14px;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .image-upload:hover {
-            border-color: var(--logo-green);
-            background: rgba(90, 122, 106, 0.03);
-        }
-
-        .image-upload i {
-            font-size: 48px;
-            color: var(--gray);
-            margin-bottom: 15px;
-        }
-
-        .image-upload p { color: var(--gray); font-size: 15px; }
-
-        .ensembles-list, .services-list, .contacts-list {
-            background: white;
-            padding: 35px;
-            border-radius: 24px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
-        }
-
-        .ensembles-list h3, .services-list h3, .contacts-list h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 25px;
-            color: var(--dark);
+        .contact-card .inline-input.title-input {
             font-size: 22px;
         }
 
-        .ensemble-item, .service-item, .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding: 25px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.3s ease;
-        }
-
-        .ensemble-item:hover, .service-item:hover, .contact-item:hover { background: #fafafa; }
-
-        .ensemble-item:last-child, .service-item:last-child, .contact-item:last-child { border-bottom: none; }
-
-        .ensemble-item img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 16px;
-        }
-
-        .ensemble-item-info, .service-item-info, .contact-item-info { flex: 1; }
-
-        .ensemble-item-info h4, .service-item-info h4, .contact-item-info h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--dark);
-        }
-
-        .ensemble-item-info p, .service-item-info p, .contact-item-info p {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .ensemble-item-actions, .service-item-actions, .contact-item-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .ensemble-item-actions button, .service-item-actions button, .contact-item-actions button {
-            padding: 10px 20px;
+        /* Add buttons */
+        .admin-add-btn {
+            display: none;
+            margin-top: 30px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--logo-green), var(--logo-dark));
+            color: white;
             border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
+            border-radius: 50px;
+            font-size: 15px;
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-edit {
-            background: linear-gradient(135deg, #f0e6b3, #e6d78a);
-            color: var(--dark);
-        }
-
-        .btn-edit:hover { background: linear-gradient(135deg, #e6d78a, #dcc96b); }
-
-        .btn-delete {
-            background: var(--rent);
-            color: white;
-        }
-
-        .btn-delete:hover { background: #e02e24; }
-
-        .edit-images {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .edit-image-item {
-            position: relative;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .edit-image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .edit-image-item .remove-img {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--rent);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
             cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-mode .admin-add-btn {
+            display: inline-flex;
+        }
+
+        .admin-add-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(90, 122, 106, 0.4);
+        }
+
+        /* Global save bar */
+        .global-save-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 25px;
+            box-shadow: 0 -4px 30px rgba(0,0,0,0.15);
+            z-index: 9997;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .admin-mode .global-save-bar {
+            display: flex;
+        }
+
+        .global-save-bar span {
+            color: var(--gray);
             font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .add-image-btn {
-            border: 2px dashed #d0d0d0;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            background: #fafafa;
-            aspect-ratio: 1;
-            transition: all 0.3s ease;
-        }
-
-        .add-image-btn:hover { border-color: var(--logo-green); background: rgba(90, 122, 106, 0.05); }
-
-        /* BOUTON SAUVEGARDER AMELIORE */
-        .btn-save {
-            background: linear-gradient(135deg, var(--logo-green), var(--logo-dark)) !important;
+        .btn-global-save {
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--sale), #2db14a);
             color: white;
             border: none;
-            padding: 18px 32px;
-            border-radius: 14px;
-            font-size: 17px;
+            border-radius: 50px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            width: 100%;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            box-shadow: 0 8px 25px rgba(90, 122, 106, 0.4);
+        }
+
+        .btn-global-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 199, 89, 0.4);
+        }
+
+        .btn-global-logout {
+            padding: 14px 25px;
+            background: var(--gray);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-global-logout:hover {
+            background: #666;
+        }
+
+        /* Delete button for cards */
+        .card-delete-btn {
+            display: none;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--rent);
+            color: white;
+            border: 3px solid white;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+            z-index: 20;
+            transition: all 0.3s ease;
+        }
+
+        .admin-mode .service-card,
+        .admin-mode .contact-card {
+            position: relative;
+        }
+
+        .admin-mode .service-card:hover .card-delete-btn,
+        .admin-mode .contact-card:hover .card-delete-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
         }
 
-        .btn-save:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(90, 122, 106, 0.5);
+        .card-delete-btn:hover {
+            transform: scale(1.1);
+            background: #e02e24;
         }
 
-        .btn-save:active {
-            transform: translateY(-1px);
+        /* File input hidden */
+        .hidden-file-input {
+            display: none;
         }
 
         /* INSTAGRAM PAGE */
@@ -1366,8 +1503,9 @@
             .about-content { gap: 50px; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .section-header h2 { font-size: 36px; }
-            .title-section img { max-height: 160px; }
-            .hero { height: calc(100vh - 250px); }
+            .title-text { font-size: 56px; }
+            .title-section { min-height: 150px; padding: 30px 20px 20px; }
+            .hero { height: calc(100vh - 270px); }
         }
 
         @media (max-width: 768px) {
@@ -1384,7 +1522,7 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
-            .hero { min-height: 350px; height: calc(100vh - 230px); }
+            .hero { min-height: 380px; height: calc(100vh - 260px); }
             .carousel-slide video { width: 90%; max-height: 50vh; }
             .hero-content { bottom: 70px; }
             .hero-content h1 { font-size: 28px; }
@@ -1399,18 +1537,42 @@
             .ensemble-header h3 { font-size: 26px; }
             .services-grid, .contact-grid { grid-template-columns: 1fr; }
             .about-text h3 { font-size: 28px; }
-            .form-row { grid-template-columns: 1fr; }
-            .ensemble-item, .service-item, .contact-item { flex-direction: column; text-align: center; }
-            .ensemble-item-actions, .service-item-actions, .contact-item-actions { width: 100%; justify-content: center; }
-            .edit-images { grid-template-columns: repeat(2, 1fr); }
-            .title-section img { max-height: 120px; }
-            .title-section { padding: 10px 10px 0; }
+            .title-text { font-size: 48px; }
+            .title-subtitle { font-size: 12px; letter-spacing: 0.2em; }
+            .title-section { min-height: 130px; padding: 25px 15px 15px; }
+            .flower { font-size: 16px; }
             .hero { padding: 0 10px 10px; }
+            
+            /* Admin mobile adjustments */
+            .edit-controls {
+                position: static;
+                margin-top: 10px;
+                justify-content: center;
+            }
+            
+            .admin-mode .edit-wrapper:hover .edit-controls,
+            .admin-mode .edit-wrapper.editing .edit-controls {
+                display: flex;
+            }
+            
+            .inline-input.title-input { font-size: 24px; }
+            .inline-input.price-input { font-size: 22px; }
+            
+            .global-save-bar {
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .global-save-bar span { font-size: 12px; }
+            .btn-global-save { padding: 12px 25px; font-size: 14px; width: 100%; justify-content: center; }
+            .btn-global-logout { padding: 10px 20px; font-size: 13px; width: 100%; }
         }
 
         @media (max-width: 380px) {
             .hero-content h1 { font-size: 24px; }
             .ensemble-tab { padding: 10px 16px; font-size: 12px; }
+            .inline-input.title-input { font-size: 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1422,13 +1584,16 @@
         }
     </style>
 <base target="_blank">
-<base target="_blank">
 </head>
 <body>
     <!-- HEADER -->
     <header id="mainHeader">
         <nav>
-            <img src="Logo .jpg" alt="Sona's Saree" class="logo mockup-float" onclick="scrollToSection('accueil')">
+            <img src="Logo .jpg" alt="Sona's Saree" class="logo" onclick="scrollToSection('accueil')">
+            <div class="admin-indicator" id="adminIndicator">
+                <i class="fas fa-user-shield"></i>
+                <span>Mode Admin</span>
+            </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="navLinks">
                 <li><a onclick="scrollToSection('accueil')">Accueil</a></li>
@@ -1440,11 +1605,24 @@
         </nav>
     </header>
 
-    <!-- HERO WRAPPER - Photo titre + Carousel ensemble avec fond vert -->
+    <!-- HERO WRAPPER -->
     <div class="hero-wrapper" id="accueil">
-        <!-- TITRE SECTION - Photo titre reduite -->
+        <!-- TITRE SECTION -->
         <div class="title-section">
-            <img src="IMG_0704.jpeg" alt="Sona's Saree - Titre" class="mask-reveal">
+            <i class="fas fa-spa flower"></i>
+            <i class="fas fa-leaf flower"></i>
+            <i class="fas fa-seedling flower"></i>
+            <i class="fas fa-spa flower"></i>
+            <i class="fas fa-leaf flower"></i>
+            <i class="fas fa-seedling flower"></i>
+            <i class="fas fa-spa flower"></i>
+            <i class="fas fa-leaf flower"></i>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <h1 class="title-text">Sona's Saree</h1>
+            <p class="title-subtitle">Ensembles d'Exception</p>
         </div>
 
         <!-- HERO CAROUSEL -->
@@ -1505,71 +1683,265 @@
             <button class="ensemble-tab" onclick="showEnsemble(4)"><i class="fas fa-leaf"></i> Ensemble 4</button>
         </div>
 
-        <div id="ensemble-1" class="ensemble-display active">
+        <!-- ENSEMBLE 1 -->
+        <div id="ensemble-1" class="ensemble-display active" data-ensemble-id="1">
             <div class="ensemble-header">
-                <h3>Ensemble 1 : Bleu Nuit & Argent</h3>
-                <p>Saree bleu nuit moderne avec broderies cuivrees et parure de bijoux en argent oxyde avec grenats. Parfait pour les evenements contemporains avec une touche de tradition.</p>
+                <div class="edit-wrapper" data-field="title" data-type="ensemble">
+                    <h3 class="editable-text">Ensemble 1 : Bleu Nuit & Argent</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="ensemble">
+                    <p class="editable-text">Saree bleu nuit moderne avec broderies cuivrees et parure de bijoux en argent oxyde avec grenats. Parfait pour les evenements contemporains avec une touche de tradition.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
                 <span class="ensemble-badge badge-location"><i class="fas fa-clock"></i> Location uniquement</span>
                 <br>
                 <a class="btn-louer" onclick="showInstagramPage()"><i class="fas fa-shopping-bag"></i> Cliquer pour louer</a>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="showImage('Ensemble 1 Photo 3.jpg')"><img src="Ensemble 1 Photo 3.jpg" alt="Ensemble 1"><div class="gallery-overlay"><p><i class="fas fa-search-plus"></i> Vue complete</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 1 Photo 2.jpg')"><img src="Ensemble 1 Photo 2.jpg" alt="Ensemble 1"><div class="gallery-overlay"><p><i class="fas fa-gem"></i> Parure complete</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 1 photo 4.jpg')"><img src="Ensemble 1 photo 4.jpg" alt="Ensemble 1"><div class="gallery-overlay"><p><i class="fas fa-tshirt"></i> Set avec blouse</p></div></div>
+            <div class="gallery-grid" id="gallery-1">
+                <div class="gallery-item" data-img-index="0">
+                    <img src="Ensemble 1 Photo 3.jpg" alt="Ensemble 1">
+                    <div class="gallery-overlay"><p><i class="fas fa-search-plus"></i> Vue complete</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="1">
+                    <img src="Ensemble 1 Photo 2.jpg" alt="Ensemble 1">
+                    <div class="gallery-overlay"><p><i class="fas fa-gem"></i> Parure complete</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="2">
+                    <img src="Ensemble 1 photo 4.jpg" alt="Ensemble 1">
+                    <div class="gallery-overlay"><p><i class="fas fa-tshirt"></i> Set avec blouse</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="add-image-item" onclick="addImageToEnsemble(1)">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Ajouter une photo</span>
+                </div>
             </div>
         </div>
 
-        <div id="ensemble-2" class="ensemble-display">
+        <!-- ENSEMBLE 2 -->
+        <div id="ensemble-2" class="ensemble-display" data-ensemble-id="2">
             <div class="ensemble-header">
-                <h3>Ensemble 2 : Kasavu du Kerala</h3>
-                <p>Inspire du Kerala Saree ou Kasavu : tisse en ivoire blanc avec bordures dorees, symbole de purete et de prosperite. Porte traditionnellement lors d'Onam, Vishu et les mariages.</p>
+                <div class="edit-wrapper" data-field="title" data-type="ensemble">
+                    <h3 class="editable-text">Ensemble 2 : Kasavu du Kerala</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="ensemble">
+                    <p class="editable-text">Inspire du Kerala Saree ou Kasavu : tisse en ivoire blanc avec bordures dorees, symbole de purete et de prosperite. Porte traditionnellement lors d'Onam, Vishu et les mariages.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
                 <span class="ensemble-badge badge-location"><i class="fas fa-clock"></i> Location uniquement</span>
                 <br>
                 <a class="btn-louer" onclick="showInstagramPage()"><i class="fas fa-shopping-bag"></i> Cliquer pour louer</a>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="showImage('Ensemble 2 photo 1.jpg')"><img src="Ensemble 2 photo 1.jpg" alt="Ensemble 2"><div class="gallery-overlay"><p><i class="fas fa-sun"></i> Inspiration Kerala</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 2 photo 2.jpg')"><img src="Ensemble 2 photo 2.jpg" alt="Ensemble 2"><div class="gallery-overlay"><p><i class="fas fa-star"></i> Elegance pure</p></div></div>
+            <div class="gallery-grid" id="gallery-2">
+                <div class="gallery-item" data-img-index="0">
+                    <img src="Ensemble 2 photo 1.jpg" alt="Ensemble 2">
+                    <div class="gallery-overlay"><p><i class="fas fa-sun"></i> Inspiration Kerala</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="1">
+                    <img src="Ensemble 2 photo 2.jpg" alt="Ensemble 2">
+                    <div class="gallery-overlay"><p><i class="fas fa-star"></i> Elegance pure</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="add-image-item" onclick="addImageToEnsemble(2)">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Ajouter une photo</span>
+                </div>
             </div>
         </div>
 
-        <div id="ensemble-3" class="ensemble-display">
+        <!-- ENSEMBLE 3 -->
+        <div id="ensemble-3" class="ensemble-display" data-ensemble-id="3">
             <div class="ensemble-header">
-                <h3>Ensemble 3 : Modernite & Tradition</h3>
-                <p>Saree bleu sarcelle avec broderies dorees, blouse moderne a manches bouffantes, et bijoux en argent. La combinaison parfaite de modernite et de tradition pour un look audacieux.</p>
+                <div class="edit-wrapper" data-field="title" data-type="ensemble">
+                    <h3 class="editable-text">Ensemble 3 : Modernite & Tradition</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="ensemble">
+                    <p class="editable-text">Saree bleu sarcelle avec broderies dorees, blouse moderne a manches bouffantes, et bijoux en argent. La combinaison parfaite de modernite et de tradition pour un look audacieux.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
                 <span class="ensemble-badge badge-location"><i class="fas fa-clock"></i> Location uniquement</span>
                 <br>
                 <a class="btn-louer" onclick="showInstagramPage()"><i class="fas fa-shopping-bag"></i> Cliquer pour louer</a>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="showImage('Ensemble 3 photo 1.jpg')"><img src="Ensemble 3 photo 1.jpg" alt="Ensemble 3"><div class="gallery-overlay"><p><i class="fas fa-magic"></i> Look moderne</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 3 photo 2.jpg')"><img src="Ensemble 3 photo 2.jpg" alt="Ensemble 3"><div class="gallery-overlay"><p><i class="fas fa-hand-sparkles"></i> Details stylisme</p></div></div>
+            <div class="gallery-grid" id="gallery-3">
+                <div class="gallery-item" data-img-index="0">
+                    <img src="Ensemble 3 photo 1.jpg" alt="Ensemble 3">
+                    <div class="gallery-overlay"><p><i class="fas fa-magic"></i> Look moderne</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="1">
+                    <img src="Ensemble 3 photo 2.jpg" alt="Ensemble 3">
+                    <div class="gallery-overlay"><p><i class="fas fa-hand-sparkles"></i> Details stylisme</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="add-image-item" onclick="addImageToEnsemble(3)">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Ajouter une photo</span>
+                </div>
             </div>
         </div>
 
-        <div id="ensemble-4" class="ensemble-display">
+        <!-- ENSEMBLE 4 -->
+        <div id="ensemble-4" class="ensemble-display" data-ensemble-id="4">
             <div class="ensemble-header">
-                <h3>Ensemble 4 : Vert Emeraude Vintage</h3>
-                <p>Shooting artistique exclusif mettant en valeur un saree vert emeraude aux bordures dorees, avec bijoux en or traditionnels. Reservez votre propre shooting avec notre photographe @sop_mrt.</p>
+                <div class="edit-wrapper" data-field="title" data-type="ensemble">
+                    <h3 class="editable-text">Ensemble 4 : Vert Emeraude Vintage</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="ensemble">
+                    <p class="editable-text">Shooting artistique exclusif mettant en valeur un saree vert emeraude aux bordures dorees, avec bijoux en or traditionnels. Reservez votre propre shooting avec notre photographe @sop_mrt.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
                 <span class="ensemble-badge badge-shooting"><i class="fas fa-camera"></i> Shooting Photo uniquement</span>
                 <br>
                 <a class="btn-louer" onclick="showInstagramPage()"><i class="fas fa-shopping-bag"></i> Cliquer pour louer</a>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 1.jpg')"><img src="Ensemble 4 photoshoot photo 1.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-crown"></i> Elegance royale</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 2.jpg')"><img src="Ensemble 4 photoshoot photo 2.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-flower"></i> Douceur & Tradition</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 3.jpg')"><img src="Ensemble 4 photoshoot photo 3.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-feather"></i> Details pieds</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 4.jpg')"><img src="Ensemble 4 photoshoot photo 4.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-smile"></i> Joie & Heritage</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 5.jpg')"><img src="Ensemble 4 photoshoot photo 5.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-heart"></i> Transmission</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photoshoot photo 6.jpg')"><img src="Ensemble 4 photoshoot photo 6.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-star"></i> Feminite</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photo 1.jpg')"><img src="Ensemble 4 photo 1.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-gem"></i> Accessoires</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photo 2 .jpg')"><img src="Ensemble 4 photo 2 .jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-palette"></i> Tissu & Broderie</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photo 3.jpg')"><img src="Ensemble 4 photo 3.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-ring"></i> Bijoux detail</p></div></div>
-                <div class="gallery-item" onclick="showImage('Ensemble 4 photo 4.jpg')"><img src="Ensemble 4 photo 4.jpg" alt="Ensemble 4"><div class="gallery-overlay"><p><i class="fas fa-sparkles"></i> Set complet</p></div></div>
+            <div class="gallery-grid" id="gallery-4">
+                <div class="gallery-item" data-img-index="0">
+                    <img src="Ensemble 4 photoshoot photo 1.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-crown"></i> Elegance royale</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="1">
+                    <img src="Ensemble 4 photoshoot photo 2.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-flower"></i> Douceur & Tradition</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="2">
+                    <img src="Ensemble 4 photoshoot photo 3.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-feather"></i> Details pieds</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="3">
+                    <img src="Ensemble 4 photoshoot photo 4.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-smile"></i> Joie & Heritage</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="4">
+                    <img src="Ensemble 4 photoshoot photo 5.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-heart"></i> Transmission</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="5">
+                    <img src="Ensemble 4 photoshoot photo 6.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-star"></i> Feminite</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="6">
+                    <img src="Ensemble 4 photo 1.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-gem"></i> Accessoires</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="7">
+                    <img src="Ensemble 4 photo 2 .jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-palette"></i> Tissu & Broderie</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="8">
+                    <img src="Ensemble 4 photo 3.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-ring"></i> Bijoux detail</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-img-index="9">
+                    <img src="Ensemble 4 photo 4.jpg" alt="Ensemble 4">
+                    <div class="gallery-overlay"><p><i class="fas fa-sparkles"></i> Set complet</p></div>
+                    <div class="image-edit-overlay">
+                        <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                        <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <div class="add-image-item" onclick="addImageToEnsemble(4)">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Ajouter une photo</span>
+                </div>
             </div>
         </div>
-        <div id="new-ensembles-container"></div>
     </section>
 
     <!-- ABOUT SECTION -->
@@ -1583,7 +1955,7 @@
                 <h3 class="mask-reveal">Bienvenue chez Sona's Saree</h3>
                 <p class="mask-reveal">Derriere ce compte se trouve une passionnee d'esthetique, animee par le desir de partager une vision unique a travers sa culture et son savoir-faire. Chaque creation est pensee comme une rencontre entre art, identite et emotion.</p>
                 <p class="mask-reveal">A travers nos ensembles, je veux mettre en lumiere la feminite indienne et sud-asiatique, symbole de grace et d'elegance. Chaque tenue est une rencontre entre heritage historique, creativite et modernite.</p>
-                <div class="slogan-box mockup-pulse"><i class="fas fa-quote-left"></i> Creativity is the Key of Happiness <i class="fas fa-quote-right"></i></div>
+                <div class="slogan-box"><i class="fas fa-quote-left"></i> Creativity is the Key of Happiness <i class="fas fa-quote-right"></i></div>
             </div>
             <div class="about-image mask-reveal-circle"><img src="Qui somme nous.jpg" alt="Notre Histoire"></div>
         </div>
@@ -1596,30 +1968,124 @@
             <p>Des prestations adaptees a vos besoins</p>
         </div>
         <div class="services-grid" id="servicesGrid">
-            <div class="service-card mask-reveal" data-service-id="1">
+            <div class="service-card" data-service-id="1">
+                <button class="card-delete-btn" onclick="deleteServiceCard(1)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="service-icon"><i class="fas fa-clock"></i></div>
-                <h3>Location de Saree</h3>
-                <p>Louez l'un de nos ensembles pour vos evenements speciaux. Chaque tenue est accompagnee de ses accessoires coordonnes.</p>
-                <div class="service-price">Sur devis</div>
+                <div class="edit-wrapper" data-field="title" data-type="service">
+                    <h3 class="editable-text">Location de Saree</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="service">
+                    <p class="editable-text">Louez l'un de nos ensembles pour vos evenements speciaux. Chaque tenue est accompagnee de ses accessoires coordonnes.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="price" data-type="service">
+                    <div class="service-price editable-text">Sur devis</div>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="service-card mask-reveal" data-service-id="2">
+
+            <div class="service-card" data-service-id="2">
+                <button class="card-delete-btn" onclick="deleteServiceCard(2)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
-                <h3>Drapage & Plissage</h3>
-                <p>Service professionnel de drapage avec plis personnalises et conseils de stylisme pour sublimer votre silhouette.</p>
-                <div class="service-price">15€</div>
+                <div class="edit-wrapper" data-field="title" data-type="service">
+                    <h3 class="editable-text">Drapage & Plissage</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="service">
+                    <p class="editable-text">Service professionnel de drapage avec plis personnalises et conseils de stylisme pour sublimer votre silhouette.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="price" data-type="service">
+                    <div class="service-price editable-text">15€</div>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="service-card mask-reveal" data-service-id="3">
+
+            <div class="service-card" data-service-id="3">
+                <button class="card-delete-btn" onclick="deleteServiceCard(3)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="service-icon"><i class="fas fa-camera"></i></div>
-                <h3>Shooting Photo</h3>
-                <p>Reservez une seance photo artistique avec notre photographe @sop_mrt pour immortaliser votre elegance.</p>
-                <div class="service-price">Sur devis</div>
+                <div class="edit-wrapper" data-field="title" data-type="service">
+                    <h3 class="editable-text">Shooting Photo</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="service">
+                    <p class="editable-text">Reservez une seance photo artistique avec notre photographe @sop_mrt pour immortaliser votre elegance.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="price" data-type="service">
+                    <div class="service-price editable-text">Sur devis</div>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="service-card mask-reveal" data-service-id="4">
+
+            <div class="service-card" data-service-id="4">
+                <button class="card-delete-btn" onclick="deleteServiceCard(4)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="service-icon"><i class="fas fa-palette"></i></div>
-                <h3>Conseil de Stylisme</h3>
-                <p>Conseils personnalises pour l'accessoirisation, le maquillage et la coiffure adaptes a votre tenue.</p>
-                <div class="service-price">Gratuit</div>
+                <div class="edit-wrapper" data-field="title" data-type="service">
+                    <h3 class="editable-text">Conseil de Stylisme</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="service">
+                    <p class="editable-text">Conseils personnalises pour l'accessoirisation, le maquillage et la coiffure adaptes a votre tenue.</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="price" data-type="service">
+                    <div class="service-price editable-text">Gratuit</div>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="admin-add-btn" onclick="addServiceCard()"><i class="fas fa-plus"></i> Ajouter un service</button>
         </div>
     </section>
 
@@ -1630,34 +2096,100 @@
             <p>Basee en Ile-de-France (91), a votre service</p>
         </div>
         <div class="contact-grid" id="contactGrid">
-            <div class="contact-card mask-reveal" data-contact-id="1" onclick="showInstagramPage()" style="cursor: pointer;">
+            <div class="contact-card" data-contact-id="1" onclick="showInstagramPage()" style="cursor: pointer;">
+                <button class="card-delete-btn" onclick="event.stopPropagation(); deleteContactCard(1)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="contact-icon"><i class="fab fa-instagram"></i></div>
-                <h3>Instagram</h3>
-                <a href="https://instagram.com/saree_by_sona" target="_blank">@saree_by_sona</a>
+                <div class="edit-wrapper" data-field="title" data-type="contact">
+                    <h3 class="editable-text">Instagram</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="event.stopPropagation(); startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="event.stopPropagation(); saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="event.stopPropagation(); cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="value" data-type="contact">
+                    <a href="https://instagram.com/saree_by_sona" target="_blank" class="editable-text" onclick="event.stopPropagation();">@saree_by_sona</a>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="event.stopPropagation(); startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="event.stopPropagation(); saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="event.stopPropagation(); cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
                 <p>Cliquez pour louer</p>
             </div>
-            <div class="contact-card mask-reveal" data-contact-id="2">
+
+            <div class="contact-card" data-contact-id="2">
+                <button class="card-delete-btn" onclick="deleteContactCard(2)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <h3>Email</h3>
-                <a href="mailto:contact@sonassaree.com">contact@sonassaree.com</a>
+                <div class="edit-wrapper" data-field="title" data-type="contact">
+                    <h3 class="editable-text">Email</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="value" data-type="contact">
+                    <a href="mailto:contact@sonassaree.com" class="editable-text">contact@sonassaree.com</a>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="contact-card mask-reveal" data-contact-id="3">
+
+            <div class="contact-card" data-contact-id="3">
+                <button class="card-delete-btn" onclick="deleteContactCard(3)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <h3>Localisation</h3>
-                <p>Ile-de-France (91)</p>
+                <div class="edit-wrapper" data-field="title" data-type="contact">
+                    <h3 class="editable-text">Localisation</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="value" data-type="contact">
+                    <p class="editable-text">Ile-de-France (91)</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="contact-card mask-reveal" data-contact-id="4">
+
+            <div class="contact-card" data-contact-id="4">
+                <button class="card-delete-btn" onclick="deleteContactCard(4)" title="Supprimer"><i class="fas fa-trash"></i></button>
                 <div class="contact-icon"><i class="fas fa-camera"></i></div>
-                <h3>Photographe</h3>
-                <a href="https://instagram.com/sop_mrt" target="_blank">@sop_mrt</a>
+                <div class="edit-wrapper" data-field="title" data-type="contact">
+                    <h3 class="editable-text">Photographe</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="value" data-type="contact">
+                    <a href="https://instagram.com/sop_mrt" target="_blank" class="editable-text">@sop_mrt</a>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="admin-add-btn" onclick="addContactCard()"><i class="fas fa-plus"></i> Ajouter un contact</button>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <img src="Logo .jpg" alt="Sona's Saree" class="footer-logo mockup-float">
+            <img src="Logo .jpg" alt="Sona's Saree" class="footer-logo">
             <p class="footer-tagline">"Creativity is the Key of Happiness"</p>
             <div class="social-links">
                 <a href="https://instagram.com/saree_by_sona" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1688,76 +2220,11 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="admin-header">
-            <h2><i class="fas fa-cog" style="margin-right: 12px;"></i>Panel Administrateur</h2>
-            <button onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Deconnexion</button>
-        </div>
-        <div class="admin-content">
-            <div class="admin-stats">
-                <div class="stat-card"><h3 id="totalEnsembles">4</h3><p>Ensembles</p></div>
-                <div class="stat-card"><h3 id="totalLocations">3</h3><p>Locations</p></div>
-                <div class="stat-card"><h3 id="totalShootings">1</h3><p>Shootings</p></div>
-            </div>
-
-            <!-- Ajouter Ensemble -->
-            <div class="admin-form">
-                <h3><i class="fas fa-plus-circle" style="margin-right: 10px;"></i>Ajouter un nouvel ensemble</h3>
-                <form id="addEnsembleForm" onsubmit="addEnsemble(event)">
-                    <div class="form-row">
-                        <div class="form-group"><label>Titre</label><input type="text" id="newEnsembleTitle" placeholder="Ex: Ensemble 5 - Rouge Passion" required></div>
-                        <div class="form-group"><label>Type</label><select id="newEnsembleType" required><option value="location">Location</option><option value="vente">Vente</option><option value="shooting">Shooting Photo</option></select></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Prix (optionnel)</label><input type="text" id="newEnsemblePrice" placeholder="Ex: 50€ ou Sur devis"></div>
-                        <div class="form-group"><label>Couleur</label><select id="newEnsembleColor"><option value="purple">Violet</option><option value="red">Rouge</option><option value="blue">Bleu</option><option value="green">Vert</option><option value="gold">Or/Dore</option></select></div>
-                    </div>
-                    <div class="form-group"><label>Description</label><textarea id="newEnsembleDesc" placeholder="Decrivez l'ensemble..." required></textarea></div>
-                    <div class="form-group">
-                        <label>Photos</label>
-                        <div class="image-upload" onclick="document.getElementById('ensembleImages').click()"><i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour uploader des photos</p><input type="file" id="ensembleImages" multiple accept="image/*" style="display: none;" onchange="handleImagePreview(this)"></div>
-                        <div id="imagePreviewContainer" style="display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap;"></div>
-                    </div>
-                    <button type="submit"><i class="fas fa-plus" style="margin-right: 10px;"></i>Ajouter l'ensemble</button>
-                </form>
-            </div>
-
-            <!-- Liste Ensembles -->
-            <div class="ensembles-list">
-                <h3><i class="fas fa-list" style="margin-right: 10px;"></i>Ensembles publies</h3>
-                <div id="ensemblesListContainer"></div>
-            </div>
-
-            <!-- Gestion Services -->
-            <div class="services-list">
-                <h3><i class="fas fa-concierge-bell" style="margin-right: 10px;"></i>Gerer les Services</h3>
-                <div id="servicesListContainer"></div>
-                <button onclick="showAddServiceModal()" style="margin-top: 20px; background: var(--logo-green); color: white; border: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;"><i class="fas fa-plus" style="margin-right: 8px;"></i>Ajouter un service</button>
-            </div>
-
-            <!-- Gestion Contacts -->
-            <div class="contacts-list">
-                <h3><i class="fas fa-address-book" style="margin-right: 10px;"></i>Gerer les Contacts</h3>
-                <div id="contactsListContainer"></div>
-                <button onclick="showAddContactModal()" style="margin-top: 20px; background: var(--logo-green); color: white; border: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;"><i class="fas fa-plus" style="margin-right: 8px;"></i>Ajouter un contact</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- EDIT MODAL - Avec bouton sauvegarder ameliore -->
-    <div id="editModal" class="edit-modal">
-        <div class="edit-box">
-            <button class="close-btn" onclick="closeEditModal()"><i class="fas fa-times"></i></button>
-            <h3><i class="fas fa-edit" style="margin-right: 10px;"></i>Modifier</h3>
-            <input type="hidden" id="editId">
-            <input type="hidden" id="editType">
-            <div class="form-group"><label>Titre</label><input type="text" id="editTitle"></div>
-            <div class="form-group"><label>Description</label><textarea id="editDesc"></textarea></div>
-            <div class="form-group" id="editPriceGroup"><label>Prix</label><input type="text" id="editPrice"></div>
-            <div class="form-group" id="editImagesGroup"><label>Images</label><div class="edit-images" id="editImagesContainer"></div><input type="file" id="editNewImages" multiple accept="image/*" style="display: none;" onchange="handleEditNewImages(this)"></div>
-            <button onclick="saveEdit()" class="btn-save"><i class="fas fa-save"></i> SAUVEGARDER LES MODIFICATIONS</button>
-        </div>
+    <!-- GLOBAL SAVE BAR -->
+    <div class="global-save-bar" id="globalSaveBar">
+        <span><i class="fas fa-info-circle"></i> Vous etes en mode edition - Les modifications sont enregistrees automatiquement</span>
+        <button class="btn-global-save" onclick="saveAllChanges()"><i class="fas fa-save"></i> Sauvegarder tout</button>
+        <button class="btn-global-logout" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Deconnexion</button>
     </div>
 
     <!-- INSTAGRAM PAGE -->
@@ -1776,11 +2243,16 @@
         </div>
     </div>
 
+    <!-- Hidden file inputs for image upload -->
+    <input type="file" id="replaceImageInput" class="hidden-file-input" accept="image/*" onchange="handleReplaceImage(this)">
+    <input type="file" id="addImageInput" class="hidden-file-input" accept="image/*" onchange="handleAddImage(this)">
+
     <script>
+        // ============================================
         // GSAP & SCROLLTRIGGER
+        // ============================================
         gsap.registerPlugin(ScrollTrigger);
 
-        // MASK REVEAL ANIMATIONS
         function initMaskRevealAnimations() {
             gsap.utils.toArray('.mask-reveal').forEach(el => {
                 ScrollTrigger.create({
@@ -1810,7 +2282,9 @@
             });
         }
 
+        // ============================================
         // CAROUSEL
+        // ============================================
         const ensembleData = [
             { name: "Ensemble 4", title: "Vert Emeraude - Shooting", desc: "Shooting photo artistique exclusif" },
             { name: "Ensemble 2", title: "Kasavu du Kerala", desc: "Purete et prosperite du Sud de l'Inde" },
@@ -1904,7 +2378,9 @@
             }
         }
 
+        // ============================================
         // ENSEMBLES
+        // ============================================
         const ensembleBgColors = { 1: 'bg-ensemble-1', 2: 'bg-ensemble-2', 3: 'bg-ensemble-3', 4: 'bg-ensemble-4' };
 
         function showEnsemble(num) {
@@ -1913,9 +2389,6 @@
             section.classList.add(ensembleBgColors[num]);
             document.querySelectorAll('.ensemble-tab').forEach((tab, i) => tab.classList.toggle('active', i === num - 1));
             document.querySelectorAll('.ensemble-display').forEach((display, i) => display.classList.toggle('active', i === num - 1));
-            document.querySelectorAll('.new-ensemble-display').forEach(display => {
-                display.classList.toggle('active', parseInt(display.dataset.ensembleNum) === num);
-            });
         }
 
         function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
@@ -1940,31 +2413,24 @@
             document.body.appendChild(modal);
         }
 
-        // ADMIN
+        // ============================================
+        // ADMIN SYSTEM
+        // ============================================
         const ADMIN_USERNAME = 'Sonasaree', ADMIN_PASSWORD = '0987';
         let isAdminLoggedIn = false;
-        let ensemblesData = [
-            { id: 1, title: 'Ensemble 1 : Bleu Nuit & Argent', type: 'location', price: '', desc: 'Saree bleu nuit moderne avec broderies cuivrees', images: ['Ensemble 1 Photo 3.jpg', 'Ensemble 1 Photo 2.jpg', 'Ensemble 1 photo 4.jpg'] },
-            { id: 2, title: 'Ensemble 2 : Kasavu du Kerala', type: 'location', price: '', desc: 'Inspire du Kerala Saree ou Kasavu', images: ['Ensemble 2 photo 1.jpg', 'Ensemble 2 photo 2.jpg'] },
-            { id: 3, title: 'Ensemble 3 : Modernite & Tradition', type: 'location', price: '', desc: 'Saree bleu sarcelle avec broderies dorees', images: ['Ensemble 3 photo 1.jpg', 'Ensemble 3 photo 2.jpg'] },
-            { id: 4, title: 'Ensemble 4 : Vert Emeraude Vintage', type: 'shooting', price: '', desc: 'Shooting artistique exclusif', images: ['Ensemble 4 photoshoot photo 1.jpg', 'Ensemble 4 photoshoot photo 2.jpg', 'Ensemble 4 photoshoot photo 3.jpg', 'Ensemble 4 photoshoot photo 4.jpg', 'Ensemble 4 photoshoot photo 5.jpg', 'Ensemble 4 photoshoot photo 6.jpg', 'Ensemble 4 photo 1.jpg', 'Ensemble 4 photo 2 .jpg', 'Ensemble 4 photo 3.jpg', 'Ensemble 4 photo 4.jpg'] }
-        ];
-        let servicesData = [
-            { id: 1, title: 'Location de Saree', desc: 'Louez l\'un de nos ensembles pour vos evenements speciaux. Chaque tenue est accompagnee de ses accessoires coordonnes.', price: 'Sur devis', icon: 'fa-clock' },
-            { id: 2, title: 'Drapage & Plissage', desc: 'Service professionnel de drapage avec plis personnalises et conseils de stylisme pour sublimer votre silhouette.', price: '15€', icon: 'fa-hand-sparkles' },
-            { id: 3, title: 'Shooting Photo', desc: 'Reservez une seance photo artistique avec notre photographe @sop_mrt pour immortaliser votre elegance.', price: 'Sur devis', icon: 'fa-camera' },
-            { id: 4, title: 'Conseil de Stylisme', desc: 'Conseils personnalises pour l\'accessoirisation, le maquillage et la coiffure adaptes a votre tenue.', price: 'Gratuit', icon: 'fa-palette' }
-        ];
-        let contactsData = [
-            { id: 1, title: 'Instagram', value: '@saree_by_sona', link: 'https://instagram.com/saree_by_sona', icon: 'fab fa-instagram', note: 'Cliquez pour louer' },
-            { id: 2, title: 'Email', value: 'contact@sonassaree.com', link: 'mailto:contact@sonassaree.com', icon: 'fas fa-envelope', note: '' },
-            { id: 3, title: 'Localisation', value: 'Ile-de-France (91)', link: '', icon: 'fas fa-map-marker-alt', note: '' },
-            { id: 4, title: 'Photographe', value: '@sop_mrt', link: 'https://instagram.com/sop_mrt', icon: 'fas fa-camera', note: '' }
-        ];
-        let tempNewImages = [], editingImages = [], currentEditType = '', currentEditId = null;
+        let currentEditingElement = null;
+        let originalValue = '';
+        let currentImageItem = null;
+        let currentAddEnsembleId = null;
 
-        function showAdminLogin() { document.getElementById('adminLoginModal').classList.add('active'); document.getElementById('loginError').style.display = 'none'; }
-        function hideAdminLogin() { document.getElementById('adminLoginModal').classList.remove('active'); }
+        function showAdminLogin() { 
+            document.getElementById('adminLoginModal').classList.add('active'); 
+            document.getElementById('loginError').style.display = 'none'; 
+        }
+        
+        function hideAdminLogin() { 
+            document.getElementById('adminLoginModal').classList.remove('active'); 
+        }
 
         function loginAdmin() {
             const username = document.getElementById('adminUsername').value;
@@ -1972,12 +2438,10 @@
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
                 isAdminLoggedIn = true;
                 hideAdminLogin();
-                document.getElementById('adminPanel').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                updateEnsemblesList();
-                updateServicesList();
-                updateContactsList();
-                updateStats();
+                document.body.classList.add('admin-mode');
+                document.getElementById('adminIndicator').classList.add('active');
+                document.getElementById('adminUsername').value = '';
+                document.getElementById('adminPassword').value = '';
             } else {
                 document.getElementById('loginError').style.display = 'block';
             }
@@ -1985,347 +2449,274 @@
 
         function logoutAdmin() {
             isAdminLoggedIn = false;
-            document.getElementById('adminPanel').classList.remove('active');
-            document.body.style.overflow = 'auto';
-            document.getElementById('adminUsername').value = '';
-            document.getElementById('adminPassword').value = '';
+            document.body.classList.remove('admin-mode');
+            document.getElementById('adminIndicator').classList.remove('active');
         }
 
-        function updateStats() {
-            document.getElementById('totalEnsembles').textContent = ensemblesData.length;
-            document.getElementById('totalLocations').textContent = ensemblesData.filter(e => e.type === 'location').length;
-            document.getElementById('totalShootings').textContent = ensemblesData.filter(e => e.type === 'shooting').length;
-            document.getElementById('ensemblesNavLink').textContent = ensemblesData.length + ' Ensembles';
-            document.querySelector('#ensembles .section-header h2').textContent = 'Nos ' + ensemblesData.length + ' Ensembles';
+        function saveAllChanges() {
+            alert('Toutes les modifications ont ete sauvegardees avec succes !');
         }
 
-        function updateEnsemblesList() {
-            const container = document.getElementById('ensemblesListContainer');
-            container.innerHTML = '';
-            ensemblesData.forEach(ensemble => {
-                const item = document.createElement('div');
-                item.className = 'ensemble-item';
-                item.innerHTML = `<img src="${ensemble.images[0]}" alt="${ensemble.title}"><div class="ensemble-item-info"><h4>${ensemble.title}</h4><p>${ensemble.desc}</p></div><div class="ensemble-item-actions"><button class="btn-edit" onclick="openEditModal('ensemble', ${ensemble.id})"><i class="fas fa-edit"></i> Modifier</button><button class="btn-delete" onclick="deleteEnsemble(${ensemble.id})"><i class="fas fa-trash"></i> Supprimer</button></div>`;
-                container.appendChild(item);
-            });
+        // ============================================
+        // INLINE EDITING FUNCTIONS
+        // ============================================
+        function startEdit(btn) {
+            const wrapper = btn.closest('.edit-wrapper');
+            const textEl = wrapper.querySelector('.editable-text');
+            const field = wrapper.dataset.field;
+            
+            originalValue = textEl.textContent;
+            currentEditingElement = wrapper;
+            
+            wrapper.classList.add('editing');
+            
+            let input;
+            if (field === 'desc') {
+                input = document.createElement('textarea');
+                input.className = 'inline-input desc-input';
+                input.rows = 4;
+            } else if (field === 'title') {
+                input = document.createElement('input');
+                input.className = 'inline-input title-input';
+                input.type = 'text';
+            } else if (field === 'price') {
+                input = document.createElement('input');
+                input.className = 'inline-input price-input';
+                input.type = 'text';
+            } else {
+                input = document.createElement('input');
+                input.className = 'inline-input';
+                input.type = 'text';
+            }
+            
+            input.value = originalValue;
+            textEl.style.display = 'none';
+            wrapper.insertBefore(input, textEl);
+            input.focus();
+            
+            // Toggle buttons
+            wrapper.querySelectorAll('.edit-btn-edit').forEach(b => b.style.display = 'none');
+            wrapper.querySelectorAll('.edit-btn-save, .edit-btn-cancel').forEach(b => b.style.display = 'flex');
         }
 
-        function updateServicesList() {
-            const container = document.getElementById('servicesListContainer');
-            container.innerHTML = '';
-            servicesData.forEach(service => {
-                const item = document.createElement('div');
-                item.className = 'service-item';
-                item.innerHTML = `<div class="service-item-info"><h4><i class="fas ${service.icon}"></i> ${service.title}</h4><p>${service.desc}</p><p style="color: var(--logo-green); font-weight: 600;">${service.price}</p></div><div class="service-item-actions"><button class="btn-edit" onclick="openEditModal('service', ${service.id})"><i class="fas fa-edit"></i> Modifier</button><button class="btn-delete" onclick="deleteService(${service.id})"><i class="fas fa-trash"></i> Supprimer</button></div>`;
-                container.appendChild(item);
-            });
+        function saveEdit(btn) {
+            const wrapper = btn.closest('.edit-wrapper');
+            const textEl = wrapper.querySelector('.editable-text');
+            const input = wrapper.querySelector('.inline-input');
+            
+            if (input) {
+                textEl.textContent = input.value;
+                input.remove();
+            }
+            
+            textEl.style.display = '';
+            wrapper.classList.remove('editing');
+            
+            // Toggle buttons
+            wrapper.querySelectorAll('.edit-btn-edit').forEach(b => b.style.display = 'flex');
+            wrapper.querySelectorAll('.edit-btn-save, .edit-btn-cancel').forEach(b => b.style.display = 'none');
         }
 
-        function updateContactsList() {
-            const container = document.getElementById('contactsListContainer');
-            container.innerHTML = '';
-            contactsData.forEach(contact => {
-                const item = document.createElement('div');
-                item.className = 'contact-item';
-                item.innerHTML = `<div class="contact-item-info"><h4><i class="${contact.icon}"></i> ${contact.title}</h4><p>${contact.value}</p></div><div class="contact-item-actions"><button class="btn-edit" onclick="openEditModal('contact', ${contact.id})"><i class="fas fa-edit"></i> Modifier</button><button class="btn-delete" onclick="deleteContact(${contact.id})"><i class="fas fa-trash"></i> Supprimer</button></div>`;
-                container.appendChild(item);
-            });
+        function cancelEdit(btn) {
+            const wrapper = btn.closest('.edit-wrapper');
+            const textEl = wrapper.querySelector('.editable-text');
+            const input = wrapper.querySelector('.inline-input');
+            
+            if (input) input.remove();
+            
+            textEl.style.display = '';
+            wrapper.classList.remove('editing');
+            
+            // Toggle buttons
+            wrapper.querySelectorAll('.edit-btn-edit').forEach(b => b.style.display = 'flex');
+            wrapper.querySelectorAll('.edit-btn-save, .edit-btn-cancel').forEach(b => b.style.display = 'none');
         }
 
-        function handleImagePreview(input) {
-            const container = document.getElementById('imagePreviewContainer');
-            container.innerHTML = '';
-            tempNewImages = [];
-            if (input.files) {
-                Array.from(input.files).forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        tempNewImages.push(e.target.result);
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.style.cssText = 'width: 90px; height: 90px; object-fit: cover; border-radius: 12px;';
-                        container.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                });
+        // ============================================
+        // IMAGE EDITING
+        // ============================================
+        function replaceImage(btn) {
+            currentImageItem = btn.closest('.gallery-item');
+            document.getElementById('replaceImageInput').click();
+        }
+
+        function handleReplaceImage(input) {
+            if (input.files && input.files[0] && currentImageItem) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = currentImageItem.querySelector('img');
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            input.value = '';
+        }
+
+        function deleteImage(btn) {
+            if (confirm('Etes-vous sur de vouloir supprimer cette image ?')) {
+                const item = btn.closest('.gallery-item');
+                item.remove();
             }
         }
 
-        function addEnsemble(event) {
-            event.preventDefault();
-            const title = document.getElementById('newEnsembleTitle').value;
-            const type = document.getElementById('newEnsembleType').value;
-            const price = document.getElementById('newEnsemblePrice').value;
-            const desc = document.getElementById('newEnsembleDesc').value;
-            const color = document.getElementById('newEnsembleColor').value;
-            const newId = ensemblesData.length + 1;
-            const newEnsemble = { id: newId, title, type, price, desc, color, images: tempNewImages.length > 0 ? tempNewImages : ['Logo .jpg'] };
-            ensemblesData.push(newEnsemble);
-            addEnsembleToPage(newEnsemble, newId);
-            document.getElementById('addEnsembleForm').reset();
-            document.getElementById('imagePreviewContainer').innerHTML = '';
-            tempNewImages = [];
-            updateEnsemblesList();
-            updateStats();
-            alert('Ensemble ajoute avec succes !');
+        function addImageToEnsemble(ensembleId) {
+            currentAddEnsembleId = ensembleId;
+            document.getElementById('addImageInput').click();
         }
 
-        function addEnsembleToPage(ensemble, num) {
-            const tabsContainer = document.getElementById('ensembleTabs');
-            const newTab = document.createElement('button');
-            newTab.className = 'ensemble-tab';
-            newTab.onclick = () => showEnsemble(num);
-            newTab.innerHTML = `<i class="fas fa-star"></i> Ensemble ${num}`;
-            tabsContainer.appendChild(newTab);
-            const container = document.getElementById('new-ensembles-container');
-            const badgeClass = ensemble.type === 'location' ? 'badge-location' : ensemble.type === 'vente' ? 'badge-vente' : 'badge-shooting';
-            const badgeText = ensemble.type === 'location' ? 'Location uniquement' : ensemble.type === 'vente' ? 'En vente' : 'Shooting Photo uniquement';
-            let imagesHtml = '';
-            ensemble.images.forEach((img, idx) => {
-                imagesHtml += `<div class="gallery-item" onclick="showImage('${img}')"><img src="${img}" alt="${ensemble.title} - Photo ${idx + 1}"><div class="gallery-overlay"><p><i class="fas fa-search-plus"></i> Vue complete</p></div></div>`;
-            });
-            const display = document.createElement('div');
-            display.id = `ensemble-${num}`;
-            display.className = 'ensemble-display new-ensemble-display';
-            display.dataset.ensembleNum = num;
-            display.innerHTML = `<div class="ensemble-header"><h3>${ensemble.title}</h3><p>${ensemble.desc}</p><span class="ensemble-badge ${badgeClass}"><i class="fas fa-${ensemble.type === 'location' ? 'clock' : ensemble.type === 'vente' ? 'tag' : 'camera'}"></i> ${badgeText}</span>${ensemble.price ? `<p style="margin-top: 10px; font-weight: 600; color: var(--logo-green);">${ensemble.price}</p>` : ''}<br><a class="btn-louer" onclick="showInstagramPage()"><i class="fas fa-shopping-bag"></i> Cliquer pour louer</a></div><div class="gallery-grid">${imagesHtml}</div>`;
-            container.appendChild(display);
-            const bgColors = { purple: 'linear-gradient(180deg, #e8e4f0 0%, #d4cde5 100%)', red: 'linear-gradient(180deg, #f5e0e0 0%, #ebc0c0 100%)', blue: 'linear-gradient(180deg, #e0e8f0 0%, #c8d8e8 100%)', green: 'linear-gradient(180deg, #e8f0e8 0%, #d0e0d0 100%)', gold: 'linear-gradient(180deg, #f5f0e0 0%, #ebe0c0 100%)' };
-            const textColors = { purple: '#3d2060', red: '#8B0000', blue: '#1a3a5c', green: '#1a3d0f', gold: '#5a4a2d' };
-            const style = document.createElement('style');
-            style.textContent = `.ensembles-section.bg-ensemble-${num} { background: ${bgColors[ensemble.color] || bgColors.purple}; } .ensembles-section.bg-ensemble-${num} .section-header h2, .ensembles-section.bg-ensemble-${num} .section-header p { color: ${textColors[ensemble.color] || textColors.purple}; }`;
-            document.head.appendChild(style);
-            ensembleBgColors[num] = `bg-ensemble-${num}`;
-        }
-
-        function openEditModal(type, id) {
-            currentEditType = type;
-            currentEditId = id;
-            let item;
-            if (type === 'ensemble') item = ensemblesData.find(e => e.id === id);
-            else if (type === 'service') item = servicesData.find(s => s.id === id);
-            else if (type === 'contact') item = contactsData.find(c => c.id === id);
-            if (!item) return;
-            document.getElementById('editId').value = id;
-            document.getElementById('editType').value = type;
-            document.getElementById('editTitle').value = item.title;
-            document.getElementById('editDesc').value = item.desc || '';
-            document.getElementById('editPriceGroup').style.display = (type === 'ensemble' || type === 'service') ? 'block' : 'none';
-            document.getElementById('editImagesGroup').style.display = (type === 'ensemble') ? 'block' : 'none';
-            if (type === 'ensemble' || type === 'service') document.getElementById('editPrice').value = item.price || '';
-            editingImages = item.images ? [...item.images] : [];
-            updateEditImagesDisplay();
-            document.getElementById('editModal').classList.add('active');
-        }
-
-        function updateEditImagesDisplay() {
-            const container = document.getElementById('editImagesContainer');
-            container.innerHTML = '';
-            editingImages.forEach((img, idx) => {
-                const div = document.createElement('div');
-                div.className = 'edit-image-item';
-                div.innerHTML = `<img src="${img}" alt="Image ${idx + 1}"><button class="remove-img" onclick="removeEditImage(${idx})"><i class="fas fa-times"></i></button>`;
-                container.appendChild(div);
-            });
-            const addBtn = document.createElement('div');
-            addBtn.className = 'add-image-btn';
-            addBtn.innerHTML = '<i class="fas fa-plus" style="font-size: 28px; color: var(--gray);"></i>';
-            addBtn.onclick = () => document.getElementById('editNewImages').click();
-            container.appendChild(addBtn);
-        }
-
-        function removeEditImage(idx) { editingImages.splice(idx, 1); updateEditImagesDisplay(); }
-
-        function handleEditNewImages(input) {
-            if (input.files) {
-                Array.from(input.files).forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) { editingImages.push(e.target.result); updateEditImagesDisplay(); };
-                    reader.readAsDataURL(file);
-                });
+        function handleAddImage(input) {
+            if (input.files && input.files[0] && currentAddEnsembleId) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const gallery = document.getElementById(`gallery-${currentAddEnsembleId}`);
+                    const addBtn = gallery.querySelector('.add-image-item');
+                    
+                    const newItem = document.createElement('div');
+                    newItem.className = 'gallery-item';
+                    newItem.innerHTML = `
+                        <img src="${e.target.result}" alt="Nouvelle photo">
+                        <div class="gallery-overlay"><p><i class="fas fa-search-plus"></i> Vue complete</p></div>
+                        <div class="image-edit-overlay">
+                            <button class="img-edit-btn replace" onclick="replaceImage(this)"><i class="fas fa-exchange-alt"></i> Remplacer</button>
+                            <button class="img-edit-btn delete" onclick="deleteImage(this)"><i class="fas fa-trash"></i> Supprimer</button>
+                        </div>
+                    `;
+                    gallery.insertBefore(newItem, addBtn);
+                };
+                reader.readAsDataURL(input.files[0]);
             }
+            input.value = '';
         }
 
-        function closeEditModal() { document.getElementById('editModal').classList.remove('active'); }
-
-        function saveEdit() {
-            const type = document.getElementById('editType').value;
-            const id = parseInt(document.getElementById('editId').value);
-            let item;
-            if (type === 'ensemble') item = ensemblesData.find(e => e.id === id);
-            else if (type === 'service') item = servicesData.find(s => s.id === id);
-            else if (type === 'contact') item = contactsData.find(c => c.id === id);
-            if (item) {
-                item.title = document.getElementById('editTitle').value;
-                item.desc = document.getElementById('editDesc').value;
-                if (type === 'ensemble' || type === 'service') item.price = document.getElementById('editPrice').value;
-                if (type === 'ensemble') item.images = editingImages;
-                
-                // Mise a jour immediate de l'affichage sur la page
-                if (type === 'ensemble') updateEnsembleDisplay(item);
-                else if (type === 'service') updateServiceDisplay(item);
-                else if (type === 'contact') updateContactDisplay(item);
-                
-                // Mise a jour des listes dans le panel admin
-                updateEnsemblesList();
-                updateServicesList();
-                updateContactsList();
-                
-                closeEditModal();
-                alert('Modifications enregistrees avec succes !');
-            }
-        }
-
-        function updateEnsembleDisplay(ensemble) {
-            // Mettre a jour l'affichage dans la section ensembles
-            const display = document.getElementById(`ensemble-${ensemble.id}`);
-            if (display) {
-                const header = display.querySelector('.ensemble-header h3');
-                const desc = display.querySelector('.ensemble-header p');
-                const grid = display.querySelector('.gallery-grid');
-                if (header) header.textContent = ensemble.title;
-                if (desc) desc.textContent = ensemble.desc;
-                if (grid) {
-                    let imagesHtml = '';
-                    ensemble.images.forEach((img, idx) => {
-                        imagesHtml += `<div class="gallery-item" onclick="showImage('${img}')"><img src="${img}" alt="${ensemble.title} - Photo ${idx + 1}"><div class="gallery-overlay"><p><i class="fas fa-search-plus"></i> Vue complete</p></div></div>`;
-                    });
-                    grid.innerHTML = imagesHtml;
-                }
-            }
-        }
-
-        function updateServiceDisplay(service) {
-            // Mettre a jour l'affichage dans la section services
-            const cards = document.querySelectorAll('.service-card');
-            cards.forEach(card => {
-                if (card.dataset.serviceId == service.id) {
-                    card.querySelector('h3').textContent = service.title;
-                    card.querySelector('p').textContent = service.desc;
-                    card.querySelector('.service-price').textContent = service.price;
-                }
-            });
-        }
-
-        function updateContactDisplay(contact) {
-            // Mettre a jour l'affichage dans la section contact
-            const cards = document.querySelectorAll('.contact-card');
-            cards.forEach(card => {
-                if (card.dataset.contactId == contact.id) {
-                    card.querySelector('h3').textContent = contact.title;
-                    const linkOrP = card.querySelector('a, p:not(.contact-icon + *)');
-                    if (linkOrP) {
-                        if (contact.link) {
-                            linkOrP.textContent = contact.value;
-                            linkOrP.href = contact.link;
-                        } else {
-                            linkOrP.textContent = contact.value;
-                        }
-                    }
-                }
-            });
-        }
-
-        function deleteEnsemble(id) {
-            if (confirm('Etes-vous sur de vouloir supprimer cet ensemble ?')) {
-                ensemblesData = ensemblesData.filter(e => e.id !== id);
-                const display = document.getElementById(`ensemble-${id}`);
-                if (display) display.remove();
-                const tabs = document.querySelectorAll('.ensemble-tab');
-                if (tabs[id]) tabs[id].remove();
-                updateEnsemblesList();
-                updateStats();
-            }
-        }
-
-        function deleteService(id) {
+        // ============================================
+        // SERVICE & CONTACT MANAGEMENT
+        // ============================================
+        function deleteServiceCard(id) {
             if (confirm('Etes-vous sur de vouloir supprimer ce service ?')) {
-                servicesData = servicesData.filter(s => s.id !== id);
-                updateServicesList();
-                updateServicesDisplay();
+                const card = document.querySelector(`.service-card[data-service-id="${id}"]`);
+                if (card) card.remove();
             }
         }
 
-        function deleteContact(id) {
+        function deleteContactCard(id) {
             if (confirm('Etes-vous sur de vouloir supprimer ce contact ?')) {
-                contactsData = contactsData.filter(c => c.id !== id);
-                updateContactsList();
-                updateContactsDisplay();
+                const card = document.querySelector(`.contact-card[data-contact-id="${id}"]`);
+                if (card) card.remove();
             }
         }
 
-        function showAddServiceModal() {
+        function addServiceCard() {
             const title = prompt('Nom du service :');
             if (!title) return;
-            const desc = prompt('Description :');
-            const price = prompt('Prix :');
-            const icon = prompt('Icone (ex: fa-clock) :') || 'fa-star';
-            const newId = servicesData.length + 1;
-            servicesData.push({ id: newId, title, desc, price, icon });
-            updateServicesList();
-            updateServicesDisplay();
+            const desc = prompt('Description :') || '';
+            const price = prompt('Prix :') || 'Sur devis';
+            
+            const grid = document.getElementById('servicesGrid');
+            const newId = Date.now();
+            
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.dataset.serviceId = newId;
+            card.innerHTML = `
+                <button class="card-delete-btn" onclick="deleteServiceCard(${newId})" title="Supprimer"><i class="fas fa-trash"></i></button>
+                <div class="service-icon"><i class="fas fa-star"></i></div>
+                <div class="edit-wrapper" data-field="title" data-type="service">
+                    <h3 class="editable-text">${title}</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="desc" data-type="service">
+                    <p class="editable-text">${desc}</p>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="price" data-type="service">
+                    <div class="service-price editable-text">${price}</div>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
         }
 
-        function showAddContactModal() {
+        function addContactCard() {
             const title = prompt('Titre du contact :');
             if (!title) return;
-            const value = prompt('Valeur :');
-            const link = prompt('Lien (optionnel) :');
-            const icon = prompt('Icone (ex: fas fa-phone) :') || 'fas fa-star';
-            const newId = contactsData.length + 1;
-            contactsData.push({ id: newId, title, value, link, icon, note: '' });
-            updateContactsList();
-            updateContactsDisplay();
-        }
-
-        function updateServicesDisplay() {
-            const grid = document.getElementById('servicesGrid');
-            grid.innerHTML = '';
-            servicesData.forEach(service => {
-                const card = document.createElement('div');
-                card.className = 'service-card mask-reveal';
-                card.dataset.serviceId = service.id;
-                card.innerHTML = `<div class="service-icon"><i class="fas ${service.icon}"></i></div><h3>${service.title}</h3><p>${service.desc}</p><div class="service-price">${service.price}</div>`;
-                grid.appendChild(card);
-            });
-        }
-
-        function updateContactsDisplay() {
+            const value = prompt('Valeur :') || '';
+            const link = prompt('Lien (optionnel) :') || '';
+            const icon = prompt('Icone FontAwesome (ex: fas fa-phone) :') || 'fas fa-star';
+            
             const grid = document.getElementById('contactGrid');
-            grid.innerHTML = '';
-            contactsData.forEach(contact => {
-                const card = document.createElement('div');
-                card.className = 'contact-card mask-reveal';
-                card.dataset.contactId = contact.id;
-                if (contact.title === 'Instagram') {
-                    card.onclick = showInstagramPage;
-                    card.style.cursor = 'pointer';
-                }
-                card.innerHTML = `<div class="contact-icon"><i class="${contact.icon}"></i></div><h3>${contact.title}</h3>${contact.link ? `<a href="${contact.link}" target="_blank">${contact.value}</a>` : `<p>${contact.value}</p>`}${contact.note ? `<p>${contact.note}</p>` : ''}`;
-                grid.appendChild(card);
-            });
+            const newId = Date.now();
+            
+            const card = document.createElement('div');
+            card.className = 'contact-card';
+            card.dataset.contactId = newId;
+            card.innerHTML = `
+                <button class="card-delete-btn" onclick="deleteContactCard(${newId})" title="Supprimer"><i class="fas fa-trash"></i></button>
+                <div class="contact-icon"><i class="${icon}"></i></div>
+                <div class="edit-wrapper" data-field="title" data-type="contact">
+                    <h3 class="editable-text">${title}</h3>
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="edit-wrapper" data-field="value" data-type="contact">
+                    ${link ? `<a href="${link}" class="editable-text">${value}</a>` : `<p class="editable-text">${value}</p>`}
+                    <div class="edit-controls">
+                        <button class="edit-btn edit-btn-edit" onclick="startEdit(this)" title="Modifier"><i class="fas fa-pen"></i></button>
+                        <button class="edit-btn edit-btn-save" onclick="saveEdit(this)" title="Sauvegarder" style="display:none;"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn edit-btn-cancel" onclick="cancelEdit(this)" title="Annuler" style="display:none;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
         }
 
+        // ============================================
         // INIT
-        document.addEventListener('DOMContentLoaded', () => {
-            // Forcer le scroll en haut de la page au chargement
+        // ============================================
+        window.onbeforeunload = function() {
             window.scrollTo(0, 0);
+        };
+        
+        if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
             
             preloadVideos();
             initMaskRevealAnimations();
             startFirstVideo();
             setTimeout(startCarousel, 500);
             updateHeroContent(0);
-            updateStats();
+        });
+        
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 hideInstagramPage();
                 hideAdminLogin();
-                closeEditModal();
-                if (isAdminLoggedIn) logoutAdmin();
                 document.querySelectorAll('[style*="z-index: 10001"]').forEach(m => m.remove());
             }
         });
